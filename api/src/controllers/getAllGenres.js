@@ -1,14 +1,13 @@
 const axios = require('axios')
-const { YOUR_API_KEY } = process.env
 require('dotenv').config()
+const { YOUR_API_KEY } = process.env
 const { Genre } = require('../db')
 const URL = 'https://api.rawg.io/api/genres'
 
 const getAllGenres = async () => {
     const count = await Genre.count()    
     if(count === 0) {
-        const { data } = await axios.get('https://api.rawg.io/api/genres?key=f40dc6df291245ce8c1dd6e821ebd5f8')
-        
+        const { data } = await axios.get(`${URL}?key=${YOUR_API_KEY}`)      
         const results = data.results
 
         const arrayObjGenres = results.map((gen)=>{return {name : gen.name, id: gen.id}})
@@ -18,8 +17,7 @@ const getAllGenres = async () => {
         return arrayObjGenres
     }
         const Genres = await Genre.findAll()
-        const dBArrayObjGenres = Genres.map((gen)=>{return {name : gen.name, id: gen.id}})
-
+        const dBArrayObjGenres = Genres.map((gen)=>{return {name : gen.name, id: gen.id}})     
     return dBArrayObjGenres
 }
 
