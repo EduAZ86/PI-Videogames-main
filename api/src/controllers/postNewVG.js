@@ -1,8 +1,8 @@
 const { Videogame } = require('../db')
-const postNewVG = async(newVG) => {
+const postNewVG = async(videogame,genreId) => {
 
-    const newDbVG = await Videogame.create(newVG)
-    await newDbVG.addGenre(newVG.genreId)
+    const newDbVG = await Videogame.create(videogame)
+    await newDbVG.addGenre(genreId)
 
     if( newDbVG) return true
 

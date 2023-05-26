@@ -17,10 +17,9 @@ const postVGHandler = async (req, res) => {
             platforms,
             background_image,
             released,
-            rating,           
-            genreId,
+            rating           
         }
-        const response = await postNewVG (videogame)
+        const response = await postNewVG (videogame,genreId)
         res.status(200).json({response})
           
     } catch (error) {
