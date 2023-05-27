@@ -1,7 +1,9 @@
-import Card from "../Card/Card"
+import Card from '../Card/Card'
+import styles from './CardContainer.module.css'
+import { useSelector } from 'react-redux'
 
 const CardsContainer = () => {
-    const videoGames = [1,2,3,4,5,6]
+    const videoGames = useSelector(state=>state.videogames)
     return(
         <div>
             {videoGames.map((game)=>{
@@ -9,8 +11,8 @@ const CardsContainer = () => {
                     key={game.id}
                     id={game.id}
                     name={game.name}
-                    img={game.background_image}
-                    generos={game.genres}
+                    image={game.background_image}
+                    genres={game.genres}
                 />
             })}
         </div>

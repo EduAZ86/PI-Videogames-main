@@ -1,7 +1,7 @@
-const Card = () => {
+const Card = (props) => {
     return(
         <div>
-            <h3>card</h3>
+            <h3>{props.name}</h3>
         </div>
     )
 }
