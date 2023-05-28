@@ -2,6 +2,8 @@ import Card from '../Card/Card'
 import styles from './CardContainer.module.css'
 import { useSelector } from 'react-redux'
 
+
+
 const CardsContainer = () => {
     const videoGames = useSelector(state=>state.videogames)
     return(
@@ -11,7 +13,7 @@ const CardsContainer = () => {
                     key={game.id}
                     id={game.id}
                     name={game.name}
-                    image={game.background_image}
+                    image={game.image}
                     genres={game.genres}
                 />
             })}

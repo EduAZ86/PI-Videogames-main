@@ -10,14 +10,14 @@ const getAllGenres = async () => {
         const { data } = await axios.get(`${URL}?key=${YOUR_API_KEY}`)      
         const results = data.results
 
-        const arrayObjGenres = results.map((gen)=>{return {name : gen.name, id: gen.id}})
+        const arrayObjGenres = results.map((gen)=>{return {name : gen.name, id: gen.id, image_background: gen.image_background}})
         
         await Genre.bulkCreate(arrayObjGenres)
 
         return arrayObjGenres
     }
         const Genres = await Genre.findAll()
-        const dBArrayObjGenres = Genres.map((gen)=>{return {name : gen.name, id: gen.id}})     
+        const dBArrayObjGenres = Genres.map((gen)=>{return {name : gen.name, id: gen.id, image_background: gen.image_background}})     
     return dBArrayObjGenres
 }
 

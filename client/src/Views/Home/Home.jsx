@@ -1,8 +1,9 @@
 import { useEffect } from "react"
+import SliderGenres from "../../components/SliderGenres/SliderGenres"
 import CardsContainer from "../../components/CardsContainer/CardContainer"
 import styles from './Home.module.css'
 import { useDispatch } from "react-redux"
-import { getVideoGames } from "../../redux/actions"
+import { getGenres, getVideoGames } from "../../redux/actions"
 
 const Home = ()=>{
 
@@ -10,12 +11,14 @@ const Home = ()=>{
 
     useEffect(()=>{
         dispatch(getVideoGames())
+        dispatch(getGenres())
     },[])
 
     return (
         <div className={styles.container}>
-            <CardsContainer/>
             <h1>Home</h1>
+            <SliderGenres/>
+            <CardsContainer/>
            
         </div>
     )

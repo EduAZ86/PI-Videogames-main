@@ -1,9 +1,10 @@
 .container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     background-color: yellow;
-    width: 500px;
-    height: 500px;
+    height: max-content;
+    width: 100vw;
+  
 }

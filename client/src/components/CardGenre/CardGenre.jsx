@@ -1,5 +1,5 @@
-import styles from './Card.module.css'
-const Card = (props) => {
+import styles from './CardGenre.module.css'
+const CardGenre = (props) => {
     return(
         <div className={styles.container}>
             <h3>{props.name}</h3>                   
@@ -8,4 +8,4 @@ const Card = (props) => {
     )
 }
 
-export default Card
+export default CardGenre
