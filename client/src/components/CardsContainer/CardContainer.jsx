@@ -1,14 +1,16 @@
+
 import Card from '../Card/Card'
 import styles from './CardContainer.module.css'
-import { useSelector } from 'react-redux'
 
 
 
-const CardsContainer = () => {
-    const videoGames = useSelector(state=>state.videogames)
+const CardsContainer = (props) => {
+
+    const { items, previousPage, nextPage, currentPage, ITEMS_FOR_PAGE, videogames } = props
+
     return(
         <div>
-            {videoGames.map((game)=>{
+            {items.map((game)=>{
                 return <Card
                     key={game.id}
                     id={game.id}
@@ -17,6 +19,10 @@ const CardsContainer = () => {
                     genres={game.genres}
                 />
             })}
+            {currentPage > 0 && <button onClick={previousPage}>previous</button>}
+            {items.length === ITEMS_FOR_PAGE && <button onClick={nextPage}>next</button>}
+            <h2>{currentPage+1}</h2>
+            <h2>{videogames.length}</h2>
         </div>
     )
 }

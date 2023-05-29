@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux"
-import CardGenre from "../CardGenre/CardGenre"
+import { useSelector } from 'react-redux'
+import CardGenre from '../CardGenre/CardGenre'
 import styles from './SliderGenres.module.css'
 import { useState } from "react"
 

@@ -8,12 +8,10 @@ import { Provider } from 'react-redux';
 
 
 ReactDOM.render(
-  <Provider  store={store}>
-    <React.StrictMode>
+  <Provider  store={store}>    
       <BrowserRouter>      
         <App />        
-      </BrowserRouter>
-    </React.StrictMode>
+      </BrowserRouter>    
   </Provider>,
   document.getElementById("root")
 );

@@ -1,16 +1,15 @@
 import { useEffect } from "react"
 import SliderGenres from "../../components/SliderGenres/SliderGenres"
-import CardsContainer from "../../components/CardsContainer/CardContainer"
 import styles from './Home.module.css'
 import { useDispatch } from "react-redux"
-import { getGenres, getVideoGames } from "../../redux/actions"
+import { getGenres } from "../../redux/actions"
+import Pagination from "../../components/Pagination/Pagination"
 
 const Home = ()=>{
 
     const dispatch = useDispatch ()
 
-    useEffect(()=>{
-        dispatch(getVideoGames())
+    useEffect(()=>{        
         dispatch(getGenres())
     },[])
 
@@ -18,8 +17,7 @@ const Home = ()=>{
         <div className={styles.container}>
             <h1>Home</h1>
             <SliderGenres/>
-            <CardsContainer/>
-           
+            <Pagination/>           
         </div>
     )
 

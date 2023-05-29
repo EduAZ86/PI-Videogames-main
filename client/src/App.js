@@ -5,12 +5,14 @@ function App() {
   const location = useLocation()
   return (
     <div className="App">
-      
-        {location.pathname !== '/' && <NavBar/>}
-        <Route exact path = '/' render = {() => <Landing/>}/>
-        <Route path = '/home' render = {() => <Home/>}/>
-        <Route path = '/create' render = {() => <Form/>}/>
-        <Route path = '/detail:id' render = {() => <Detail/>}/>      
+
+      {location.pathname !== '/' && <NavBar/>}
+      <Switch>
+        <Route exact path = '/' component = {() => <Landing/>}/>
+        <Route path = '/home' component = {() => <Home/>}/>
+        <Route path = '/create' component = {() => <Form/>}/>
+        <Route path = '/detail:id' component = {() => <Detail/>}/>
+      </Switch>     
         
     </div>
   );
