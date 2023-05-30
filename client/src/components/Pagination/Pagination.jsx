@@ -1,7 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useDispatch } from "react-redux"
-import { useEffect, useState } from "react"
-import { getVideoGames } from "../../redux/actions"
+import { useState } from "react"
 import CardsContainer from '../CardsContainer/CardContainer'
 
 
@@ -9,11 +7,6 @@ const ITEMS_FOR_PAGE = 15
 
 const Pagination = () => {
 
-    const dispatch = useDispatch ()
-
-    useEffect (() => {
-        dispatch(getVideoGames())
-    },[])
     
     const { videogames } = useSelector((state)=>state)
  

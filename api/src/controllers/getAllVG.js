@@ -21,46 +21,6 @@ const getAllVG = async () => {
         allResults = allResults.concat(response.data.results)
     })
 
-/////////////////////////////SI FUNCIONA ////////////////////////////
-    
-// let allResults = []
-
-// const responses = await Promise.all([
-//     axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40&page=1`),
-//     axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40&page=2`),
-//     axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40&page=3`),
-//     axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40&page=4`),
-//     axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40&page=5`),
-// ]);
-
-// responses.forEach((response)=> {
-//     allResults = allResults.concat(response.data.results)
-// })
-////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-    // let i = 1
-    // const { data } = await axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40&page=${i}`)
-    // let result1 = data.results
-    
-
-    // const { data } = await axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40`)
-    // const results = data.results
-///////////////////////////////////////////////////////////
-
-    // const infoApi = async () => {
-    //     let allResults = []; // arreglo temporal para almacenar los resultados de cada solicitud de API
-    //     for (let i = 1; i <= 5; i++) { // realizamos 5 solicitudes, cada una con un parámetro "page" diferente
-    //       const response = await axios.get(`https://api.rawg.io/api/games?key=8832286909b344fea6fba9e9f2ba9e0d&page=${i}`
-    //       );
-    //       allResults = allResults.concat(response.data.results); // concatenamos los resultados de cada solicitud al arreglo temporal
-    //     }
-    //     return allResults; // devolvemos todos los resultados concatenados
-    //   };
-
-////////////////////////////////////////////////////////////
-
     const ApiVideoGames = allResults?.map((game)=>{
         const objVG = {
             id: game.id,
