@@ -2,15 +2,19 @@ import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getVideoGames } from "../../redux/actions"
+import { getVideoGames, getGenres } from "../../redux/actions"
+
 
 const Landing = ()=>{
-    
-    const dispatch = useDispatch ()
 
+    const dispatch = useDispatch ()
+    
     useEffect (() => {
-        dispatch(getVideoGames())
-    },[])
+      
+        dispatch(getGenres())
+        dispatch(getVideoGames())    
+    },[])    
+
 
     return (
         <div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Sidebar.module.css'
 const Sidebar = () => {
-    return <div>
+    return <div className={styles.container}>
             <Link to='/home'>Home</Link>
             <Link to='/create'>Form</Link>
     </div>
