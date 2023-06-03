@@ -15,24 +15,31 @@ module.exports = (sequelize) => {
     },
     description: { 
       type: DataTypes.STRING,
-      allowNull: true
-    },
-    platforms: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false
     },
     background_image: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     released:{ 
       type: DataTypes.STRING,
+      allowNull: false
     },
     rating:{
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
-    source: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
+    metacritic:{
+      type: DataTypes.STRING
+    },
+    stores:{
+      type: DataTypes.ARRAY(DataTypes.STRING)      
+    },
+    short_screenshots:{
+      type: DataTypes.ARRAY(DataTypes.STRING)
     }
+
+
     
   }, {timestamps : false});
 };

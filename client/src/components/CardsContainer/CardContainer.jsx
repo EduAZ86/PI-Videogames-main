@@ -15,7 +15,7 @@ const CardsContainer = (props) => {
                     key={game.id}
                     id={game.id}
                     name={game.name}
-                    image={game.image}
+                    background_image={game.background_image}
                     genres={game.genres}
                 />
             })}

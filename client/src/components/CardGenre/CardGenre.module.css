@@ -1,9 +1,38 @@
 .container{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width:100%;
+    display: block;
+    position: relative;
+    background-color: linear;
+    
+ 
+}
+.name{
+    position: absolute;
+    color: azure;
+    z-index: 20;
+    top: 56%;
+    left: 10%;
+    padding: 0;
+    margin: 0;
+    text-align: left;
 }
 .image{
-    position: relative;
-    height: 200px;
+    position: absolute;
+    height: 120px;
+    width: 94%;
+    display: block;
+    padding-left: 3%;
+    padding-right: 3%;
+    
+}
+.gradient{
+    position: absolute;
+    height: 120px;
+    width: 94%; 
+    left: 3%;
+    
+    background: linear-gradient(to bottom, transparent 30%, black);
+    z-index: 15;
 }

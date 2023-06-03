@@ -4,7 +4,7 @@ const { YOUR_API_KEY } = process.env
 const { Videogame } = require('../db')
 const URL = 'https://api.rawg.io/api/games'
 
-const N_PAGES = 20
+const N_PAGES = 3
 
 const getAllVG = async () => {
     
@@ -21,16 +21,7 @@ const getAllVG = async () => {
         allResults = allResults.concat(response.data.results)
     })
 
-    const ApiVideoGames = allResults?.map((game)=>{
-        const objVG = {
-            id: game.id,
-            name : game.name,
-            released: game.released,
-            image : game.background_image,
-            rating: game.rating
-        }
-        return objVG
-    })
+    const ApiVideoGames = allResults
     const DBVideoGames = await Videogame.findAll()
 
     return ApiVideoGames.concat(DBVideoGames)

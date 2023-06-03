@@ -1,3 +1,225 @@
 .container{
-    background-color: burlywood;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    height: 100vh;
+    top: 0px;          
+    position: absolute;
+    
+    background-color:#434242;
+    z-index: 120;
+
+}
+.img{
+    z-index: 120;
+    width: 100%;
+    height: 100%;
+    filter: invert(51%) sepia(82%) saturate(412%) hue-rotate(129deg) brightness(90%) contrast(86%) drop-shadow(0 0 2px #F3EFE0);
+    
+}
+.buttonhamburger{
+    width: 25px;
+    height: 25px;
+     top: 20px;
+    left: 20px;
+    padding: 0;
+    position: relative;
+    z-index: 120;   
+}
+.buttonhamburger:active {
+    transform: scale(0.9);
+  }
+
+
+.links{
+    height: 120px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    top: 20px;
+    position: relative;
+   
+    gap: 20px;
+}
+
+
+
+.home{
+    width: 30px;
+    height: 30px;
+     top: 20px;
+    left: 20px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/home.png');    
+    background-size: contain;
+}
+.home:active {
+    transform: scale(0.9);
+}
+
+.form{
+    width: 30px;
+    height: 30px;
+     top: 20px;
+    left: 20px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/addgame.png');    
+    background-size: contain;
+}
+.form:active {
+    transform: scale(0.9);
+}
+
+
+.filters{
+    margin: 0;
+    padding: 0;
+    width: 120px;
+    height: 100vh;
+    z-index: 130;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: absolute;
+    background-color: aquamarine;
+}
+
+.forname{
+    position: relative;
+    top: 20px;
+    height: 60px;
+    display: grid;
+    grid-template-areas: ' title title'
+                            'az za';
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 30% 70%;
+    align-items: center;
+    
+    
+}
+
+.title{
+    text-align: center;
+    
+    position: relative;
+    grid-area: title;
+}
+
+/* ///////////////////FOR NAME//////////////////////////// */
+
+.azbutton{
+    grid-area: az;
+    width: 30px;
+    height: 30px;
+    left: 25%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/sortalphabeticup.png');    
+    background-size: contain;
+    border-radius: 10%;
+    border: none;
+}
+
+.azbutton:active {
+    transform: scale(0.9);
+}
+
+.zabutton{
+    grid-area: za;
+    width: 30px;
+    height: 30px;
+    left: 25%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/sortalphabeticdown.png');    
+    background-size: contain;
+    border-radius: 10%;
+    border: none;
+}
+
+.zabutton:active {
+    transform: scale(0.9);
+}
+
+/* /////////////////////FOR RATING////////////////////////// */
+
+.upratingbutton{
+    grid-area: az;
+    width: 30px;
+    height: 30px;
+    left: 25%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/sortup.png');    
+    background-size: contain;
+    border-radius: 10%;
+    border: none;
+}
+
+.upratingbutton:active {
+    transform: scale(0.9);
+}
+
+.downratingbutton{
+    grid-area: za;
+    width: 30px;
+    height: 30px;
+    left: 25%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/sortdown.png');    
+    background-size: contain;
+    border-radius: 10%;
+    border: none;
+}
+
+.downratingbutton:active {
+    transform: scale(0.9);
+}
+
+/* /////////////////////FOR RELEASED///////////////////////// */
+
+.asending{
+    grid-area: az;
+    width: 30px;
+    height: 30px;
+    left: 25%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/sort-calendar-ascending.svg');    
+    background-size: contain;
+    border-radius: 10%;
+    border: none;
+}
+
+.asending:active {
+    transform: scale(0.9);
+}
+
+.desending{
+    grid-area: za;
+    width: 30px;
+    height: 30px;
+    left: 25%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/sort-calendar-descending.svg');    
+    background-size: contain;
+    border-radius: 10%;
+    border: none;
+}
+
+.desending:active {
+    transform: scale(0.9);
 }

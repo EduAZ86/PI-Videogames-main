@@ -2,8 +2,9 @@ import { useSelector } from 'react-redux'
 import CardGenre from '../CardGenre/CardGenre'
 import styles from './SliderGenres.module.css'
 import { useState } from "react"
-
-const SliderGenres = () => {
+import nextIcon from '../../assets/flecha-derecha.png'
+import prevIcon from '../../assets/flecha-izquierda.png'
+const SliderGenres = (props) => {
     const Genres = useSelector(state=>state.genres)
 
     const [ currentImage, setCurrentImage ] = useState([0,1,2])
@@ -34,7 +35,7 @@ const SliderGenres = () => {
     
     return(
         <div className={styles.container}>
-            <button onClick={previusGenre}>⇦</button>
+            <button onClick={previusGenre} className={styles.previus}><img className={styles.img} src={prevIcon} alt="" /></button>
             {Genres.map((genre, index)=>{
                 return <>
                 {currentImage.includes(index)  && (
@@ -42,13 +43,14 @@ const SliderGenres = () => {
                     key={genre.id}
                     id={genre.id}
                     name={genre.name}
-                    image={genre.image_background}                
+                    image={genre.image_background}
+                    genres_filter={props.genres_filter}                
                     /> 
                 )}
                 </>
                 
             })}
-            <button onClick={nextGenre}>⇨</button>
+            <button onClick={nextGenre} className={styles.next}><img className={styles.img} src={nextIcon} alt="" /></button>
         </div>
     )
 }

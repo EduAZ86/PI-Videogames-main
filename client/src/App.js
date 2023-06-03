@@ -1,25 +1,34 @@
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Landing, Home, Form, Detail } from './Views' 
 import NavBar from './components/NavBar/NavBar';
+import { useDispatch } from 'react-redux';
 
+import React, { useState } from 'react';
+import { getGenres, organizer } from './redux/actions';
 
-import React from 'react';
 function App() {
   const location = useLocation()
+  const dispatch = useDispatch()
+
+  const handler_sort = (order) => {
+
+    dispatch(organizer(order))
+  }
+
   return (
     <div >    
-      {location.pathname !== '/' && <NavBar/>}
+      {location.pathname !== '/' && <NavBar handler_sort={handler_sort} />}
       <div >
-        <Switch>
-          <Route exact path = '/' component = {() => <Landing/>}/>
-          <Route path = '/home' component = {() => <Home/>}/>
-          <Route path = '/create' component = {() => <Form/>}/>
-          <Route path = '/detail/:id' component = {() => <Detail/>}/>
-        </Switch>
+        <Routes>
+          <Route exact path = '/' element= { <Landing/>}/>
+          <Route path = '/home' element= { <Home/>}/>
+          <Route path = '/create' element= { <Form/>}/>
+          <Route path = '/detail/:id' element= { <Detail/>}/>
+        </Routes>
       </div>
         
     </div>
-  );
+  )
 }
 
 export default App;

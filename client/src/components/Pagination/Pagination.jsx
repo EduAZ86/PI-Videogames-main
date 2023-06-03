@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import CardsContainer from '../CardsContainer/CardContainer'
 
 
@@ -13,6 +13,10 @@ const Pagination = () => {
     const  [items, setItems] = useState([...videogames].splice(0, ITEMS_FOR_PAGE))
 
     const [currentPage, setCurrentPage] = useState(0)
+    
+        useEffect(()=>{
+            setItems([...videogames].splice(0,ITEMS_FOR_PAGE))
+        },[videogames])
 
     /////////////////////////////////////////////////////////////////
 

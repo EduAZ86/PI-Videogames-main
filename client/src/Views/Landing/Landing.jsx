@@ -9,11 +9,10 @@ const Landing = ()=>{
 
     const dispatch = useDispatch ()
     
-    useEffect (() => {
-      
+    useEffect (() => {      
         dispatch(getGenres())
         dispatch(getVideoGames())    
-    },[])    
+    },[dispatch])    
 
 
     return (

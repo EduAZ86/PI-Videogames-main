@@ -1,10 +1,17 @@
 .container{
+    padding-top: 80px;
+    padding-left: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: yellow;
+    background-color: #222222;
     height: max-content;
-    width: 100vw;
-  
+    width: auto;
+    overflow: hidden;
+    
+}
+.sidebarspace{
+    height: auto;
+    width: 100px;
 }

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch} from "react-redux"
-import { useParams } from "react-router-dom/cjs/react-router-dom.min"
+import { useParams } from "react-router-dom"
 import { getVideoGameById } from "../../redux/actions"
 
 const Detail = ()=>{
@@ -12,10 +12,7 @@ const Detail = ()=>{
     },[])
 
   
-    const video_game = useSelector((state) => state.detailVG)    
-   
-
-
+    const video_game = useSelector((state) => state.detailVG)
     return (
         <div>
             <h1>Detail</h1>
