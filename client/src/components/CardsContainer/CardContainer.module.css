@@ -1,4 +1,45 @@
 .container {
-    display: flex;
-    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    margin-left: 6px;
+    display: grid;
+    grid-template-areas: 'cards cards'
+                         'buttons pages'                         
+                         'footer footer';  
+    grid-template-rows: 1650px 40px 120px;
+    grid-template-columns: 560px 125px;
+    gap: 10px;
+}
+
+.mapCardsContainer{
+ grid-area: cards;
+}
+
+.buttons{
+    grid-area: buttons;
+    display: grid;
+    grid-template-areas: 'prev next'; 
+    grid-template-rows: 100%;
+    grid-template-columns: 50% 50%;
+}
+
+.next{
+    grid-area: next;
+}
+
+.prev{
+    grid-area: prev;
+}
+
+.currentPage{
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    color: azure;
+    grid-area: pages;
+    font-size: 25px;
+}
+
+.footer{
+    grid-area: footer;
 }

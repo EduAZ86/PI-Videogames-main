@@ -1,5 +1,5 @@
 import { GET_VIDEOGAMES, GET_GENRE, GET_VG_BY_ID, ADD_VIDEOGAME,
-     GET_VG_BY_NAME,  CLEAN_VG_BY_NAME ,DELETE_VG, ORDER, ORIGIN_FILTER, GENRES_FILTER, PLATFORM_FILTER, CLEAN_FILTERS } from "./actionTypes"
+     GET_VG_BY_NAME,  CLEAN_VG_BY_NAME ,DELETE_VG, ORDER, ORIGIN_FILTER, GENRES_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM } from "./actionTypes"
 import axios from 'axios'
 
 const URL = 'http://localhost:3001'
@@ -40,6 +40,14 @@ export const getGenres = () => {
         return dispatch({type: GET_GENRE, payload: genres.data})
     }
 }
+
+export const getPlatforms = () => {
+    return async (dispatch) => {
+        const platforms = await axios.get(`${URL}/platforms`)
+        return dispatch({type: GET_PLATFORM, payload: platforms.data})
+    }
+}
+
 
 //FILTERS
 
