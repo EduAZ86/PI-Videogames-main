@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES,GET_VG_BY_ID,GET_VG_BY_NAME, ADD_VIDEOGAME, DELETE_VG, GET_GENRE, CLEAN_VG_BY_NAME, ORDER, GENRES_FILTER, ORIGIN_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM   } from "./actionTypes"
+import { GET_VIDEOGAMES,GET_VG_BY_ID,GET_VG_BY_NAME, ADD_VIDEOGAME, DELETE_VG, GET_GENRE, CLEAN_VG_BY_NAME, ORDER, GENRES_FILTER, ORIGIN_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER, ERROR   } from "./actionTypes"
 
 const initialState = {
     videogames: [],
@@ -6,7 +6,9 @@ const initialState = {
     videogamesName: [],
     genres: [],
     platforms: [],
-    cache: []
+    cache: [],
+    users:[],
+    error:''
 }
 const rootReducer = (state = initialState, action) =>{
     switch (action.type) {
@@ -22,6 +24,9 @@ const rootReducer = (state = initialState, action) =>{
 
         case CLEAN_VG_BY_NAME:
             return {...state, videogamesName: action.payload}
+        
+        case ADD_VIDEOGAME:
+            return {...state, videogames: action.payload}
         
         case GET_GENRE:
             return {...state, genres: action.payload}
@@ -90,6 +95,15 @@ const rootReducer = (state = initialState, action) =>{
                 }
             })                        
             return {...state, videogames: orderGames}
+
+            case GET_ALL_USERS:
+                return {...state, users: action.payload}
+            
+            case POST_NEW_USER:
+                return {...state, users: action.payload}
+            
+            case ERROR:
+                return {...state, error: action.payload}
 
         default:
             return { ...state}

@@ -1,29 +1,51 @@
-import { GET_VIDEOGAMES, GET_GENRE, GET_VG_BY_ID, ADD_VIDEOGAME,
-     GET_VG_BY_NAME,  CLEAN_VG_BY_NAME ,DELETE_VG, ORDER, ORIGIN_FILTER, GENRES_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM } from "./actionTypes"
+import { GET_VIDEOGAMES, GET_GENRE, GET_VG_BY_ID, ADD_VIDEOGAME, ERROR,
+     GET_VG_BY_NAME,  CLEAN_VG_BY_NAME ,DELETE_VG, ORDER, ORIGIN_FILTER, GENRES_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER } from "./actionTypes"
 import axios from 'axios'
 
 const URL = 'http://localhost:3001'
 
+export const postVideoGame = (newVideoGame) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.post(`${URL}/videogames`,newVideoGame)
+            return dispatch({type:ADD_VIDEOGAME, payload: response})
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.message})
+        }
+        
+    }
+}
 export const getVideoGames = () => {
     return async (dispatch) => {
-        const videogames = await axios.get(`${URL}/videogames`)
-                  
-        return dispatch({type: GET_VIDEOGAMES, payload: videogames.data});
+        try {
+            const videogames = await axios.get(`${URL}/videogames`)                      
+            return dispatch({type: GET_VIDEOGAMES, payload: videogames.data});            
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.message}) 
+        }
     }
 }
 
 export const getVideoGameById = (id) => {
     return async (dispatch) => {
-        const detailVideoGame = await axios.get(`${URL}/videogames/${id}`)
-        return dispatch({type: GET_VG_BY_ID, payload: detailVideoGame.data })
+        try {
+            const detailVideoGame = await axios.get(`${URL}/videogames/${id}`)
+            return dispatch({type: GET_VG_BY_ID, payload: detailVideoGame.data })            
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.message})
+        }
     }
 
 }
 
 export const getVideoGamesByName = (name) =>{
     return async (dispatch) =>{
-        const vGamesByName = await axios.get(`${URL}/videogames/name?name=${name}`)
-        return dispatch({type: GET_VG_BY_NAME, payload: vGamesByName.data})
+        try {
+            const vGamesByName = await axios.get(`${URL}/videogames/name?name=${name}`)
+            return dispatch({type: GET_VG_BY_NAME, payload: vGamesByName.data})            
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.message})
+        }
     }
 }
 
@@ -36,15 +58,23 @@ export const cleanVideoGamesByName = () => {
 
 export const getGenres = () => {
     return async (dispatch) => {
-        const genres = await axios.get(`${URL}/genres`)
-        return dispatch({type: GET_GENRE, payload: genres.data})
+        try {
+            const genres = await axios.get(`${URL}/genres`)
+            return dispatch({type: GET_GENRE, payload: genres.data})            
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.message})
+        }
     }
 }
 
 export const getPlatforms = () => {
     return async (dispatch) => {
-        const platforms = await axios.get(`${URL}/platforms`)
-        return dispatch({type: GET_PLATFORM, payload: platforms.data})
+        try {
+            const platforms = await axios.get(`${URL}/platforms`)
+            return dispatch({type: GET_PLATFORM, payload: platforms.data})            
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.message})
+        }
     }
 }
 
@@ -78,3 +108,29 @@ export const organizer = (order) => {
     return ({type: ORDER, payload: order})
     
 }
+
+
+//USERS
+
+export const getAllUsers = () => {
+    return async (dispatch) => {
+        try {
+            const users = await axios.get(`${URL}/users`)
+            return dispatch({type: GET_ALL_USERS, payload: users.data})            
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.message})
+        }
+    }
+}
+
+export const postNewUser = (user) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.post(`${URL}/users`,user)
+            return dispatch({type: POST_NEW_USER, payload: data})            
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.message})
+        }
+    }
+}
+
