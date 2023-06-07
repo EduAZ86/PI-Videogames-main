@@ -26,7 +26,7 @@ const Landing = ()=>{
     
     const login = (userData) => {
         const { email, password } = userData
-        if(!users.some((us) => us.email === email && us.password === password)){
+        if(!users?.some((us) => us.email === email && us.password === password)){
             dispatch(postNewUser(userData)) 
         }
         if (users?.some((us) => us.email === email && us.password === password)) {

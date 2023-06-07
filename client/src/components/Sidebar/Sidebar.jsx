@@ -4,13 +4,17 @@ import styles from './Sidebar.module.css'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getVideoGames, organizer } from '../../redux/actions'
-
+import { filterOrigin } from '../../redux/actions'
 import { useState } from 'react'
 
 
 const Sidebar = (props) => {
 
-  
+    const dispatch = useDispatch()
+
+    const datafilter = (data) => {
+        dispatch(filterOrigin(data))
+    }
  
     const [ band, setBand ] = useState(false)
 
@@ -36,6 +40,12 @@ const Sidebar = (props) => {
                         <h4 className={styles.title}>released</h4>
                         <button type="button" onClick={() => {props.handler_sort('ase')}} className={styles.asending}/>
                         <button type="button" onClick={() => {props.handler_sort('des')}} className={styles.desending}/>
+                    </div>
+                    <div className={styles.origen}>
+                    
+                        <button type="button" onClick={() =>  datafilter('data')} className={styles.data} ></button>
+                        <button type="button" onClick={() =>  datafilter('api')} className={styles.api} ></button>
+
                     </div>
 
                

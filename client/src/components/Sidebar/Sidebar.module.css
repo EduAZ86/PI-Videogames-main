@@ -251,3 +251,57 @@
 .desending:active {
     transform: scale(0.9);
 }
+
+
+
+
+
+
+
+.origen {
+    position: relative;
+    top: 20px;
+    height: 60px;
+    display: grid;
+    grid-template-areas: ' orign origin'
+                            'data api';
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 30% 70%;
+    align-items: center;
+}
+
+.data{
+    grid-area: data;
+    width: 30px;
+    height: 30px;
+    left: 12%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/database_120091.png');    
+    background-size: contain;
+    border-radius: 10%;
+    border: none;
+    
+}
+.data:active {
+    transform: scale(0.9);
+}
+
+.api{
+    grid-area: api;
+    width: 30px;
+    height: 30px;
+    left: 12%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #888888;
+    position: relative;
+    background-image: url('../../assets/api.png');    
+    background-size: contain;
+    border-radius: 10%;
+    border: none;
+    
+}
+.api:active {
+    transform: scale(0.9);
+}
