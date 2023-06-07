@@ -44,11 +44,12 @@ const { Videogame, Genre, Platform, User, Favorite } = sequelize.models;
 
 // Aca vendrian las relaciones
 
-Videogame.belongsToMany(Genre, { through: 'videogameGenre' })
-Genre.belongsToMany(Videogame, { through: 'videogameGenre' })
+Videogame.belongsToMany(Genre, { through: 'videogame_genres' })
+Genre.belongsToMany(Videogame, { through: 'videogame_genres' })
 
-Videogame.belongsToMany(Platform, { through: 'videogamePlatform' })
-Platform.belongsToMany(Videogame, { through: 'videogamePlatform' })
+Videogame.belongsToMany(Platform, { through: 'videogame_platforms' })
+Platform.belongsToMany(Videogame, { through: 'videogame_platforms' })
+
 
 User.belongsToMany(Favorite, { through: 'user_favorite', timestamps: false})
 Favorite.belongsToMany(User, { through: 'user_favorite', timestamps: false})

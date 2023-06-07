@@ -6,8 +6,11 @@ const URL = 'https://api.rawg.io/api/games'
 const uuidRegExp = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 const getVGDetailById = async (id) => {
     if (uuidRegExp.test(id)) {
-        const dBVG = await Videogame.findByPk(id)
-    if(dBVG) return dBVG    
+        const FindDBVideoGame = await Videogame.findByPk(id)
+
+        DbVG = {...FindDBVideoGame.dataValues, genres: FindDBVideoGame.dataValues.genre, platforms: FindDBVideoGame.dataValues.platform.map(platform => ({ platform })),  stores: FindDBVideoGame.dataValues.stores.map(store => ({ store }))}
+        
+    if(DbVG) return DbVG   
     }
     const { data } = await axios.get(`${URL}/${id}?key=${YOUR_API_KEY}`)
     const apivG = data

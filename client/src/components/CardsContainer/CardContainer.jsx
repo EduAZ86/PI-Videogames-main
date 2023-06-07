@@ -1,4 +1,5 @@
 
+import { useState } from 'react'
 import Card from '../Card/Card'
 import styles from './CardContainer.module.css'
 
@@ -6,8 +7,14 @@ import styles from './CardContainer.module.css'
 
 const CardsContainer = (props) => {
 
-    const { items, previousPage, nextPage, currentPage, ITEMS_FOR_PAGE, videogames } = props
+     const [ currentP, setCurrentP ] = useState(0)
 
+     const handleCurrentPage = () => {
+        
+     }
+
+    const { items, previousPage, nextPage, currentPage, ITEMS_FOR_PAGE, videogames } = props
+    
     return(
         <div className={styles.container}>
             <div className={styles.mapCardsContainer} >

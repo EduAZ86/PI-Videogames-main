@@ -27,16 +27,16 @@ const Login = (props) => {
         <div className={styles.container}>
             <form onSubmit={handleSubmit} autoComplete='off' >
                 <div>
-                    <label htmlFor='email'>Email</label>
+                    <label className={styles.label} htmlFor='email'>Email</label>
                     <input type='email' name='email' placeholder='email' value={userData.email} onChange={handleChange}
-                    className={styles.email} />
+                    className={styles.imput} />
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label  className={styles.label} htmlFor="password">Password</label>
                     <input type='password' name='password' placeholder='password' value={userData.password} onChange={handleChange}
-                    className={styles.password} />
+                    className={styles.imput} />
                 </div>
-                <button onClick={()=>handleSubmit}>Submit</button>                
+                <button className={styles.button} onClick={()=>handleSubmit}>Submit</button>                
             </form>
             <div className={styles.errorContainer}>
             {

@@ -4,9 +4,11 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { getVideoGames, getGenres, getAllUsers } from "../../redux/actions"
 import Login from "../../components/Login/Login"
+import styles from './Landing.module.css'
 
 
 const Landing = ()=>{
+    const [access, setAccess] = useState(false)
 
     const dispatch = useDispatch ()
     const users = useSelector((state) => state.users)
@@ -18,7 +20,6 @@ const Landing = ()=>{
 
     },[dispatch,access])
 
-    const [access, setAccess] = useState(false)
 
     const navigate = useNavigate()
     
@@ -64,9 +65,9 @@ const Landing = ()=>{
 
 
     return (
-        <div>
-            <h1>Landing page</h1>
-            <Login login={login} validation={validation}></Login>
+        <div className={styles.container}>
+           
+            <Login  login={login} validation={validation}></Login>
             <Link to='/home'>Home</Link>
 
         </div>

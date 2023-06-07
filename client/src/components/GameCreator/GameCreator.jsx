@@ -5,23 +5,10 @@ import { useNavigate } from 'react-router-dom'
 import { getGenres, getPlatforms, postVideoGame } from '../../redux/actions'
 import DinamicSelect from '../DinamicSelect/DinamicSelect'
 
-const RegExp_URL_image = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|png|gif)/g
+const RegExp_URL_image = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*\.(jpg|jpeg|png|gif)$/i
 const RegExp_date = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
 const GameCreator = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-
-    const allPlatforms = useSelector((state) => state.platforms)
-    const allGenres = useSelector((state) => state.genres)
-    const allStores = [{name:'Steam'},{name:'Epic Game'},{name:'Xbox'},{name:'Google Play'},{name:'PlayStation Store'},{name:'App Store'},{name:'Nintendo Store'}]
-
-
-    useEffect(() => {
-        if(!allGenres.length) dispatch(getGenres())
-        if(!allPlatforms.length) dispatch(getPlatforms()) 
-    } ,[dispatch,allGenres,allPlatforms])
-
-
+    
     const [ form, setForm ] = useState({
         name: '',
         background_image: '',
@@ -52,18 +39,40 @@ const GameCreator = () => {
         metacritic:''   
     })
 
+    const allStores = [{name:'Steam'},{name:'Epic Game'},{name:'Xbox'},{name:'Google Play'},{name:'PlayStation Store'},{name:'App Store'},{name:'Nintendo Store'}]
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const allPlatforms = useSelector((state) => state.platforms)
+    const allGenres = useSelector((state) => state.genres)
+    
+
+    useEffect(() => {
+        if(!allGenres.length) dispatch(getGenres())
+        if(!allPlatforms.length) dispatch(getPlatforms()) 
+    } ,[dispatch,allGenres,allPlatforms])
+
+
     const handleChange = (event) => {
+        
         const property = event.target.name
         const value = event.target.value
         setForm({ ...form, [property]: value })
         
-        if(!errors.length) return setErrors({[property]:''})               
+        if(!errors.length){
+            return setErrors({[property]:''})
+        }
     }
 
     const handleSubmit = (event) => {
+        console.log(form)
+        console.log(form.platforms.length)
+        console.log(errors)
+     
         event.preventDefault()
-
-        if (form.name.length < 2) {
+        
+        if (form.name.trim() === '') {
             return setErrors({...errors, name:'Please enter a name'})
         }
 
@@ -80,10 +89,11 @@ const GameCreator = () => {
         }
 
         if (form.platforms.length === 0) {
+            console.log('platform vacio')
             return setErrors({...errors, platforms: 'Please select at least one platform'})
         }
 
-        if (!RegExp_date.test(form.released)) {
+        if (form.released === "") {
             return setErrors({...errors, released:'Please enter a date'})
         }
 
@@ -110,8 +120,8 @@ const GameCreator = () => {
         if (form.metacritic < 0 || form.metacritic > 100) {
             return setErrors({...errors, rating:'Please put a metacritic bethween 0 and 100'})
         }
-
-        // dispatch(postVideoGame(form))
+      
+        dispatch(postVideoGame(form))
         navigate('/home')
     }
 
@@ -130,6 +140,7 @@ const GameCreator = () => {
             developers: [],
             tags: [],
             metacritic:0
+
         })
         setDev('')
         setTag('')
@@ -143,8 +154,7 @@ const GameCreator = () => {
     const handleSelect = (optionSelect) => {
         if (optionSelect.id === 'select-genre') {
             const genre = {name: optionSelect.value}           
-            setForm({...form, genres: [...form.genres, genre]})
-            console.log(form)
+            setForm({...form, genres: [...form.genres, genre]})           
         }
         if (optionSelect.id === 'select-platform') {
             const platform = {name: optionSelect.value}
@@ -161,10 +171,12 @@ const GameCreator = () => {
     const [ tag, setTag] = useState('')
 
     const handleDev = (event) => {
+        event.preventDefault();
         setDev(event.target.value)
     }
 
     const handleTag = (event) => {
+        event.preventDefault();
         setTag(event.target.value)
     }
 
@@ -183,83 +195,84 @@ const GameCreator = () => {
         }
         setTag('')
     }
-
+console.log();
 
     return (
         <form  onSubmit={(event) => handleSubmit(event)} onReset={(event) => handleReset(event)} className={styles.container}>
-
             
-            <div className={styles.field}>
-                <input type="text" id='name' value={form.name} name='name' onChange={(event) => handleChange(event)} className={styles.inputtext}/>
-                <label htmlFor="name" className={styles.labeltext}>Name: </label>
+            
+            <div className={styles.name}>
+                <label htmlFor="name" className={styles.label}>Name: </label>
+                <input type="text" id='name' value={form.name} name='name' onChange={(event) => handleChange(event)} className={styles.inputname}/>
                 <p className={styles.error}>{errors.name}</p>
             </div>
 
-            <div className={styles.field}>
+            <div className={styles.image1}>
+              <label htmlFor="image"className={styles.label}>Image 1: </label>
               <input type="text" id='image' value={form.background_image} name='background_image' onChange={(event) => handleChange(event)} className={styles.inputtext}/>
-              <label htmlFor="image" className={styles.labeltext}>Image: </label>
               <p className={styles.error}>{ errors.background_image}</p>
             </div>
 
-            <div className={styles.field}>
+            <div className={styles.image2}>
+              <label htmlFor="image2" className={styles.label}>Image 2: </label>
               <input type="text" id='image2' value={form.background_image_additional} name='background_image_additional' onChange={(event) => handleChange(event)} className={styles.inputtext}/>
-              <label htmlFor="image2" className={styles.labeltext}>Image 2: </label>
               <p className={styles.error}>{ errors.background_image}</p>
             </div>
 
-            <div className={styles.textareaContainer}>
+            <div className={styles.description}>
                <label htmlFor="description" className={styles.label}>Description: </label>
                <textarea id="description" cols="30" rows="10" value={form.description_raw} name='description_raw' onChange={(event) => handleChange(event)} className={styles.textarea}/>
                <p className={styles.error}>{errors.description}</p>
             </div>
 
-            <div>
+            <div className={styles.released}>
                 <label htmlFor="released" className={styles.label}>Released: </label>
                <input type="date" id="released" value={form.released} name='released' onChange={(event) => handleChange(event)} className={styles.input}/>
                <p className={styles.error}>{ errors.released}</p>
             </div>
 
-            <div>
-               <label htmlFor="rating" className={styles.labelCb}>Rating: </label>
+            <div className={styles.rating}>
+               <label htmlFor="rating" className={styles.label}>Rating: </label>
                <input type="range" id="rating" value={form.rating} name='rating' onChange={(event) => handleChange(event)} min='0' step='0.5' max='5' className={styles.input}/>
                <span>{form.rating}</span>
                <p className={styles.error}>{errors.rating}</p>
             </div>
 
-            <div>
-               <label htmlFor="metacritic" className={styles.labelCb}>metacritic: </label>
+            <div className={styles.metacritic}>
+               <label htmlFor="metacritic" className={styles.label}>metacritic: </label>
                <input type="range" id="metacritic" value={form.metacritic} name='metacritic' onChange={(event) => handleChange(event)} min='0' step='1' max='100' className={styles.input}/>
                <span>{form.metacritic}</span>
                <p className={styles.error}>{errors.metacritic}</p>
             </div>
 
-            <div>
+            <div className={styles.selects}>
                 <DinamicSelect title='genre' handleSelect={handleSelect} options={allGenres} />
                 <DinamicSelect title='platform' handleSelect={handleSelect} options={allPlatforms}/>
                 <DinamicSelect title='store' handleSelect={handleSelect} options={allStores}/>
             </div>
 
 
-            <div>
-                <label htmlFor="developers" className={styles.labelCb}>developers: </label>
-                <input type="text" id="developers" value={dev} name='developers' onChange={(event) => handleDev(event)} className={styles.input}/>
-                <span>{dev}</span>
-                <button  onClick={() => addDev(dev)} >add</button>
+            <div className={styles.developersytag}>
+                <label htmlFor="developers" className={styles.label}>Developers: </label>
+                <input type="text" id="developers" value={dev} name='developers' onChange={(event) => handleDev(event)} className={styles.inputdev}/>
+                
+                <button className={styles.buttondev} type="button" onClick={() => addDev(dev)} >{dev}     ✔ ADD</button>
                 <p className={styles.error}>{errors.developers}</p>
-            </div>
-
-            <div>
-                <label htmlFor="tags" className={styles.labelCb}>tags: </label>
-                <input type="text" id="tags" value={tag} name='developers' onChange={(event) => handleTag(event)} className={styles.input}/>
-                <span>{tag}</span>
-                <button  onClick={() => addTag(tag)} >add</button>
+                <label htmlFor="tags" className={styles.label}>Tags: </label>
+                <input type="text" id="tags" value={tag} name='developers' onChange={(event) => handleTag(event)} className={styles.inputtag}/>
+               
+                <button className={styles.buttontag} type="button" onClick={() => addTag(tag)} >{tag}      ✔ ADD</button>
                 <p className={styles.error}>{errors.tags}</p>
             </div>
 
-           
+          
+          
 
-            <input type="submit" value="Create Game" className={styles.buttons} />
-            <input type="reset" value="Reset Form" className={styles.buttons} />
+           
+            <div className={styles.buttons}>
+                <input type="submit" value="Create Game" className={styles.buttons} />
+                <input type="reset" value="Reset Form" className={styles.buttons} />
+            </div>
 
 
 

@@ -3,6 +3,7 @@ import { useSelector, useDispatch} from "react-redux"
 import { useParams } from "react-router-dom"
 import { getVideoGameById } from "../../redux/actions"
 import styles from './Detail.module.css'
+import Loader from "../../components/Loader/Loader"
 const Detail = ()=>{
 
     const { id } = useParams()
@@ -24,35 +25,42 @@ const Detail = ()=>{
     const tags = video_game.tags?.map((tag) => tag.name)
 
     return (
-        <div className={styles.container} >
-            <img className={styles.background} src={video_game.background_image_additional} alt="" />        
-            <div className={styles.subContainer}>
-                <div className={styles.name} >
-                    <h1>{video_game.name}</h1>
-                    <p>{description_short}.</p>
-                    <h4> developers: {developers?.join(' - ')}</h4>
-                    <h4>released: {video_game.released}</h4>
-                </div>
-                <div className={styles.imageContainer} >
-                    <img className={styles.image} src={video_game.background_image} alt=""/>
-                    <h2 className={styles.rating} >Rating: {video_game.rating}</h2>
-                </div>
-                <div className={styles.central} >
-                    <h3>metacritic: {video_game.metacritic}</h3>
-                    <h5>{tags?.join(' - ')}</h5>
-                   
-                </div>
-                <div className={styles.info} >
-                    <p className={styles.description}>{description}</p>                   
-                </div>
-                <div className={styles.tags} >
-                <h4>{platforms?.join(', ')}</h4>
-                <h4>{genres?.join(', ')}</h4>
-                <h4>{stores?.join(', ')}</h4>
-                </div>
-            </div>       
+        
+        < >
+            {video_game !== null?
+                <>
+                    <img className={styles.background} src={video_game.background_image_additional} alt="" />        
+                    <div className={styles.subContainer}>
+                        <div className={styles.name} >
+                            <h1>{video_game.name}</h1>
+                            <p>{description_short}.</p>
+                            <h4> developers: {developers?.join(' - ')}</h4>
+                            <h4>released: {video_game.released}</h4>
+                        </div>
+                        <div className={styles.imageContainer} >
+                            <img className={styles.image} src={video_game.background_image} alt=""/>
+                            <h2 className={styles.rating} >Rating: {video_game.rating}</h2>
+                        </div>
+                        <div className={styles.central} >
+                            <h3>metacritic: {video_game.metacritic}</h3>
+                            <h5>{tags?.join(' - ')}</h5>
+                        
+                        </div>
+                        <div className={styles.info} >
+                            <p className={styles.description}>{description}</p>                   
+                        </div>
+                        <div className={styles.tags} >
+                        <h4>{platforms?.join(', ')}</h4>
+                        <h4>{genres?.join(', ')}</h4>
+                        <h4>{stores?.join(', ')}</h4>
+                        </div>
+                    </div>       
+                
+                </>
+            : <Loader/>
+        }
             
-        </div>
+        </>
     )
 
 }

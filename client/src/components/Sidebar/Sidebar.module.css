@@ -1,8 +1,8 @@
 .container{
     margin: 0;
     padding: 0;
-    width: 60px;
-    height: 100vh;
+    width: 120px;
+    height: 60px;
     top: 0px;          
     position: absolute;
     
@@ -18,13 +18,19 @@
     
 }
 .buttonhamburger{
-    width: 25px;
-    height: 25px;
-     top: 20px;
+    width: 30px;
+    height: 30px;
+     top: 15px;
     left: 20px;
-    padding: 0;
-    position: relative;
-    z-index: 120;   
+    background-image: url('../../assets/hamburger_button.png');
+    cursor: pointer;   
+    position: relative;      
+    background-size: contain;
+    box-shadow: 0px 0px 5px#e90c59;
+    border-radius: 5px;
+    border: none;
+    filter: invert(74%) sepia(77%) saturate(595%) hue-rotate(151deg) brightness(102%) contrast(88%);
+    
 }
 .buttonhamburger:active {
     transform: scale(0.9);
@@ -32,12 +38,13 @@
 
 
 .links{
-    height: 120px;
+    height: 60px;
     width: auto;
     display: flex;
-    flex-direction: column;
-    top: 20px;
-    position: relative;
+    flex-direction: row;
+    top: 0px;
+    left: 50px;
+    position: absolute;
    
     gap: 20px;
 }
@@ -47,13 +54,15 @@
 .home{
     width: 30px;
     height: 30px;
-     top: 20px;
+    top: 15px;
     left: 20px;
     cursor: pointer;
-    box-shadow: 0px 0px 5px #888888;
     position: relative;
     background-image: url('../../assets/home.png');    
     background-size: contain;
+    box-shadow: 0px 0px 5px#e90c59;
+    border-radius: 5px;
+    filter: invert(22%) sepia(86%) saturate(5687%) hue-rotate(329deg) brightness(90%) contrast(104%);
 }
 .home:active {
     transform: scale(0.9);
@@ -62,13 +71,15 @@
 .form{
     width: 30px;
     height: 30px;
-     top: 20px;
+    top: 15px;
     left: 20px;
     cursor: pointer;
-    box-shadow: 0px 0px 5px #888888;
     position: relative;
     background-image: url('../../assets/addgame.png');    
     background-size: contain;
+    box-shadow: 0px 0px 5px#e90c59;
+    border-radius: 5px;
+    filter: invert(22%) sepia(86%) saturate(5687%) hue-rotate(329deg) brightness(90%) contrast(104%);
 }
 .form:active {
     transform: scale(0.9);
@@ -82,12 +93,28 @@
     height: 100vh;
     z-index: 130;
     top: 60px;
+    left: -120px;
     display: flex;
     flex-direction: column;
     gap: 50px;
     position: absolute;
-    background-color: aquamarine;
+    background-color:#434242;
+    animation-name: mover;
+    animation-duration: 0.8s;
+    animation-fill-mode:forwards; 
 }
+
+    @keyframes mover {
+        from {
+        left: -120px;
+        opacity: 0;
+        }
+        
+        to {
+        left: 0px;
+        opacity: 1;
+        }
+    }
 
 .forname{
     position: relative;
@@ -105,7 +132,7 @@
 
 .title{
     text-align: center;
-    
+    color: #e90c59;
     position: relative;
     grid-area: title;
 }
@@ -120,7 +147,8 @@
     cursor: pointer;
     box-shadow: 0px 0px 5px #888888;
     position: relative;
-    background-image: url('../../assets/sortalphabeticup.png');    
+    background-image: url('../../assets/sortalphabeticup.png');
+    
     background-size: contain;
     border-radius: 10%;
     border: none;

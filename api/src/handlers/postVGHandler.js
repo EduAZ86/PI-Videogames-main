@@ -4,26 +4,37 @@ const postVGHandler = async (req, res) => {
     try {
         const {
             name,
-            description,
-            platforms,
             background_image,
+            background_image_additional,
+            description_raw,
+            platforms,
             released,
-            rating,           
-            genreId,
-          } = req.body
+            rating,
+            genres,
+            stores,
+            developers,
+            tags,
+            metacritic
+        } = req.body
         const videogame = {
             name,
-            description,
-            platforms,
             background_image,
+            background_image_additional,
+            description_raw,
+            platforms,
             released,
-            rating           
+            rating,
+            genres,
+            stores,
+            developers,
+            tags,
+            metacritic          
         }
-        const response = await postNewVG (videogame,genreId)
+        const response = await postNewVG (videogame)
         res.status(200).json({response})
           
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(405).json({error: error.message})
     }
 }
 

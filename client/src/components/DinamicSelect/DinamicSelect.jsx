@@ -15,19 +15,20 @@ const DinamicSelect = (props) => {
         setOptionSelect({value: value, id: id})
     }
 
-    const reset = () => {
+    const reset = (event) => {
+        
         setOptionSelect({value:'', id:''})
     }
 
     return(
-    <div>
-        <label htmlFor={id}>{label}</label>
-        <select name={id} id={id} onChange={(event) => handleOption(event.target.value, event.target.id)} >
-            <option value="">Select a {title}</option>
+    <div className={styles.container}>        
+        <label  className={styles.label} htmlFor={id}>{label} </label>
+        <select  className={styles.select}  name={id} id={id} onChange={(event) => handleOption(event.target.value, event.target.id)} >
+            <option  className={styles.option}  value="">Select a {title}</option>
             {options_name.map((opt) => <option value={opt}>{opt}</option>)}
         </select>
-        <span>{optionSelect.value}</span>
-        <button onClick={() => {
+        <span  className={styles.span}  >{optionSelect.value}</span>
+        <button  className={styles.button}  type="button" onClick={() => {
             handleSelect(optionSelect)
             reset()}}>add</button>
     </div>

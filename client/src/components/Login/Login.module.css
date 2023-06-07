@@ -1,11 +1,75 @@
 .container{
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+   height: 200px;
+   width: 400px;
+   border-radius: 50%;
+   z-index: 50;
+  
 }
 
-.email{
-
+.imput{
+    border: unset;
+    background-color: unset;
+    background-color: #f3e0e0;
+    height: 30px;
+    width: 200px;
+    font-family: 'Bruno Ace', cursive;
+    border-radius: 20px; 
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding-left: 5px;
+    
 }
 
-.password{
+.label{
+    font-family: 'Bruno Ace', cursive;
+    margin-right: 20px;
+    color: #F3EFE0;
+    text-shadow: 0px 0px 2px #434242;
+}
 
-}           
+.button {
+    min-width: 130px;
+    margin-right: 20px;
+    height: 35px;
+    color:  #f3e0e0 ;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-family: 'Bruno Ace', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 20px;
+    border: 2px solid #22A39F;
+    background: #22A39F;
+  }
+  .button:hover {
+    background: #E96479 ;
+    color: #22A39F
+  }
+
+  
+.error{
+    color:#E96479 ;
+    font-family: 'Bruno Ace', cursive;
+    text-align: justify;
+    padding-left: 55px;
+    max-width: 330px;
+    font-size: 15px; 
+}
+
+.errorContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    height: 200px;
+    width: 400px;   
+    white-space: break-word;
+    overflow: hidden;
+}

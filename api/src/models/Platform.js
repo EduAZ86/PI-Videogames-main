@@ -2,18 +2,20 @@ const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define('platform', {
-        id:{
-            type: DataTypes.INTEGER,
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
             allowNull: false,
-            primaryKey: true
-        },
+            defaultValue: DataTypes.UUIDV4
+          },
+
         name:{
             type: DataTypes.STRING,
             allowNull: false
         },
         image_background: {
             type: DataTypes.STRING,
-            allowNull: false
+           
         }
     },{timestamps : false})
 }

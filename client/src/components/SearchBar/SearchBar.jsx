@@ -27,7 +27,7 @@ const SearchBar = () => {
     return <div className={styles.container}>
         <input onChange={handleChange} value={nameVG} type='text' placeholder='Search' className={styles.input}/>
         <button onClick={onClean} className={styles.buttonX}>X</button>
-        <button onClick={() => onSearch(nameVG)} className={styles.buttonSearch} >Search</button>
+        <button onClick={() => onSearch(nameVG)} className={styles.buttonSearch} ></button>
 
 
     </div>

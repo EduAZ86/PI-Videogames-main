@@ -13,7 +13,8 @@
     position: relative;
     grid-template-rows: 34px 33px 33px;
     grid-template-columns: 190px 70% max-content ;
-    background-color: rgb(43, 137, 226);    
+    background-color: #46dff0;
+    background-image: linear-gradient(to right, #46dff0 22%, black);   
     border-radius: 5px;
     padding: 0;
 

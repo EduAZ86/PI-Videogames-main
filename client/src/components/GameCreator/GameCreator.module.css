@@ -1,3 +1,217 @@
 .container{
+    width: 97%;
+    height: 95%;
+    padding-top: 3%;
+    display: grid;
+    grid-template-areas: 'name develotag image1'
+                         ' description develotag image1'
+                         ' description rating image2'
+                         ' selects  metacritic image2'
+                         'selects released buttons';
+    grid-template-columns: 35% 30% 35% ;
+    grid-template-rows: 15% 25% 20% 15% 25% ;
+    overflow: hidden;
+    background-color: rgba(67, 66, 66,  0.8);
+    padding-left: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+/* ///////// NAME /////// */
+.name{
+    grid-area: name;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 120px ;
+    
 
 }
+.inputname{
+    height: 20px;
+   margin-left: 0;
+    width: 350px;
+    border-radius: 5px;
+}
+
+
+
+/* ///////////////////////// */
+
+/* ///////////DESCCRPTION////////////////// */
+
+.description{
+    height: 200px;
+    margin-top: 40px;
+    grid-area: description;
+    display: flex;
+    flex-direction: column;
+    padding-right: 5%;
+    
+}
+
+.textarea{
+    max-width: 370px;
+    max-height: 500px;
+    resize: none;
+    border-radius: 5px;
+}
+
+/* /////////////////////////////////////// */
+
+/* /////////SELECTORS///////////////////// */
+
+.selects{
+    grid-area: selects;
+    width: 370px;
+    height: 200px;
+    justify-content: space-between;
+}
+
+
+/* ///////////////////////////////////////// */
+
+/* /////////////////DEVELOPERS y Tags/////////////////// */
+
+.developersytag{
+    grid-area: develotag;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+
+.inputdev{
+    height: 20px;
+    margin-bottom: 5px;
+     width: 300px;
+     border-radius: 5px;
+    
+}
+
+.spandev{
+    height: 20px;
+    margin-bottom: 5px;
+     width: 300px;
+     border-radius: 5px;
+   
+}
+
+.buttondev{
+    height: 25px;
+    margin-bottom: 5px;
+     width: 300px;
+     border-radius: 5px;
+    
+}
+
+
+
+
+.inputtag{
+    height: 20px;
+    margin-bottom: 5px;
+     width: 300px;
+     border-radius: 5px;
+}
+
+
+
+.buttontag{
+    height: 25px;
+    margin-bottom: 5px;
+     width: 300px;
+     border-radius: 5px;
+}
+
+
+
+
+
+
+
+/* ///////////////////////////////////////////// */
+
+.released{
+    grid-area: released;
+    height: 200px;
+    width: 300px;
+    margin-top: 20px;
+}
+.inputreleased{
+
+}
+
+.tags{
+    grid-area: tags
+}
+
+.rating{
+    grid-area: rating;
+    height: 100px;
+    width: 300px;
+    margin-top:40px ;
+}
+
+.metacritic{
+    grid-area: metacritic;
+    height: 100px;
+    width: 300px;
+    margin-top:10px ;
+    
+}
+
+
+.image1{
+    grid-area: image1;
+   display: flex;
+   flex-direction: column;
+    height: 200px;
+    width: 300px;
+    margin-top:10px ;
+}
+
+.image2{
+    grid-area: image2;
+    display: flex;
+    flex-direction: column;
+     height: 200px;
+     width: 300px;
+     margin-top:10px ;
+}
+
+.buttons{
+    grid-area: buttons;
+    display: flex;
+    flex-direction: row;
+     height: 30px;
+     width: 300px;
+     margin-top:10px ;
+     border-radius: 5px;
+}
+
+
+.error{
+    
+    color: brown;
+    width: 300px;
+    height: 20px;
+    font-size: 10px;
+}
+
+.label{
+    color: rgb(255, 251, 251);
+    margin: 0px 10px 10px 10px;
+    text-shadow: 0 0 3px black;
+}
+
+.inputtext{
+    width: 300px;
+    margin-top:10px ;
+    border-radius: 5px;
+    height: 20px;
+}
+

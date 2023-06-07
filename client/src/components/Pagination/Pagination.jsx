@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from "react"
 import CardsContainer from '../CardsContainer/CardContainer'
+import styles from './Pagination.module.css'
 
 
 const ITEMS_FOR_PAGE = 15

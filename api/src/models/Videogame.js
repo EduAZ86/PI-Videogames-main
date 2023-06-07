@@ -13,12 +13,16 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true
     },
-    description: { 
+    background_image: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    background_image: {
+    background_image_additional: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    description_raw: { 
+      type: DataTypes.TEXT,
       allowNull: false
     },
     released:{ 
@@ -26,18 +30,37 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     rating:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     },
-    metacritic:{
-      type: DataTypes.STRING
-    },
     stores:{
-      type: DataTypes.ARRAY(DataTypes.STRING)      
+      type: DataTypes.ARRAY(DataTypes.JSON),
+      allowNull: false      
     },
-    short_screenshots:{
-      type: DataTypes.ARRAY(DataTypes.STRING)
+    developers:{
+      type: DataTypes.ARRAY(DataTypes.JSON),
+      allowNull: false      
+    },
+    tags:{
+      type: DataTypes.ARRAY(DataTypes.JSON),
+      allowNull: false      
+    },
+
+    metacritic:{
+      type: DataTypes.INTEGER
+    },
+
+    genre:{
+      type: DataTypes.ARRAY(DataTypes.JSON),
+      allowNull: false      
+    },
+
+    platform:{
+      type: DataTypes.ARRAY(DataTypes.JSON),
+      allowNull: false      
     }
+    
+    
 
 
     
