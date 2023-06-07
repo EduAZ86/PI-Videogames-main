@@ -17,8 +17,7 @@ const Login = (props) => {
       setErrors(validation({...userData, [property]:value}))
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    const handleSubmit = () => {       
         login(userData)
     }
 
@@ -36,7 +35,7 @@ const Login = (props) => {
                     <input type='password' name='password' placeholder='password' value={userData.password} onChange={handleChange}
                     className={styles.imput} />
                 </div>
-                <button className={styles.button} onClick={()=>handleSubmit}>Submit</button>                
+                <button type='button' className={styles.button} onClick={()=>handleSubmit()}>Submit</button>                
             </form>
             <div className={styles.errorContainer}>
             {

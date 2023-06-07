@@ -1,4 +1,4 @@
-import { GET_VIDEOGAMES,GET_VG_BY_ID,GET_VG_BY_NAME, ADD_VIDEOGAME, DELETE_VG, GET_GENRE, CLEAN_VG_BY_NAME, ORDER, GENRES_FILTER, ORIGIN_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER, ERROR   } from "./actionTypes"
+import { GET_VIDEOGAMES,GET_VG_BY_ID,GET_VG_BY_NAME, ADD_VIDEOGAME, DELETE_VG, GET_GENRE, CLEAN_VG_BY_NAME, ORDER, GENRES_FILTER, ORIGIN_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER, ERROR, ACCESS   } from "./actionTypes"
 
 const initialState = {
     videogames: [],
@@ -8,10 +8,14 @@ const initialState = {
     platforms: [],
     cache: [],
     users:[],
+    access:false,
     error:''
 }
 const rootReducer = (state = initialState, action) =>{
     switch (action.type) {
+        case ACCESS:
+            return{...state, access: action.payload}
+
         case GET_VIDEOGAMES:
             state.cache = [...state.videogames]
             return {...state, videogames: action.payload}

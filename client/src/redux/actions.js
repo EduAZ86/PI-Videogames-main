@@ -1,8 +1,14 @@
 import { GET_VIDEOGAMES, GET_GENRE, GET_VG_BY_ID, ADD_VIDEOGAME, ERROR,
-     GET_VG_BY_NAME,  CLEAN_VG_BY_NAME ,DELETE_VG, ORDER, ORIGIN_FILTER, GENRES_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER } from "./actionTypes"
+     GET_VG_BY_NAME,  CLEAN_VG_BY_NAME ,DELETE_VG, ORDER, ORIGIN_FILTER, GENRES_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER, ACCESS } from "./actionTypes"
 import axios from 'axios'
 
 const URL = 'http://localhost:3001'
+
+export const setAccess = (access) => {
+    return (dispatch) => {
+        return dispatch({type:ACCESS , payload: access})
+    }
+}
 
 export const postVideoGame = (newVideoGame) => {
     return async (dispatch) => {
@@ -104,8 +110,9 @@ export const filterPlatform = (platform) => {
 //ORGANIZER
 
 export const organizer = (order) => {
-   
-    return ({type: ORDER, payload: order})
+   return ( dispatch ) => {
+       return dispatch({type: ORDER, payload: order})
+   }
     
 }
 
