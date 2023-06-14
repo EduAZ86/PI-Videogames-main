@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { cleanVideoGamesByName, getVideoGamesByName } from "../../redux/actions"
 import styles from './searchBar.module.css'
@@ -8,10 +8,23 @@ const SearchBar = () => {
 
     const handleChange = (event) => {
         setNameVG(event.target.value)
+        if (nameVG === '') {
+            dispatch(cleanVideoGamesByName())
+            console.log(setNameVG);
+        }
     }
 
+    useEffect(() => {
+        if (nameVG.trim() !== '') {
+            dispatch(getVideoGamesByName(nameVG))            
+        } else{
+            dispatch(cleanVideoGamesByName())
+        }
+        
+    },[nameVG])
+
     const onClean = () => {
-        setNameVG('')
+        setNameVG('')       
         dispatch(cleanVideoGamesByName())
     }
 

@@ -3,7 +3,7 @@ import { NavLink, Navigate, useNavigate } from 'react-router-dom'
 import styles from './NavBar.module.css'
 import SearchBar from '../SearchBar/SearchBar'
 import Sidebar from '../Sidebar/Sidebar'
-import { setAccess } from '../../redux/actions'
+import { cleanVideoGamesByName, setAccess } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 const NavBar = (props) => {
@@ -13,9 +13,11 @@ const NavBar = (props) => {
         dispatch(setAccess(false))
         navigate('/')
     }
-   
-    const VG_by_name = useSelector((state) => state.videogamesName)
-
+    let VG_by_name = useSelector((state) => state.videogamesName)
+    const  onClean = () => {
+      dispatch(cleanVideoGamesByName()) 
+    }
+    
     return (
         <div className={styles.container}>
             <Sidebar handler_sort={props.handler_sort} />           
@@ -25,7 +27,7 @@ const NavBar = (props) => {
                 ?(<div className={styles.results}> 
                     {VG_by_name.map((game)=>{
                         return(
-                        <li><NavLink  to={`/detail/${game.id}`} >{game.name}</NavLink></li>
+                        <li><NavLink  to={`/detail/${game.id}`} ><button onClick={onClean}>{game.name}</button></NavLink></li>
                         )
                     })}            
                 </div>)            

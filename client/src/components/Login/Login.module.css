@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items:center;
-   height: 200px;
+   height: 300px;
    width: 400px;
    border-radius: 50%;
    z-index: 50;
@@ -88,4 +88,5 @@
     width: 400px;   
     white-space: break-word;
     overflow: hidden;
+    color: white;
 }
