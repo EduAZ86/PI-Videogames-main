@@ -12,8 +12,7 @@ const getAllVG = async () => {
     let responses = []
 
     for (let i = 1; i < N_PAGES; i++) {
-        responses = await Promise.all([
-            ...responses, axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40&page=${i}`)
+        responses = await Promise.all([...responses, axios.get(`${URL}?key=${YOUR_API_KEY}&page_size=40&page=${i}`)
         ]);        
     }
 
