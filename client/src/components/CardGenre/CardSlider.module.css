@@ -1,12 +1,12 @@
-.container{
+.container{   
     display: flex;
     flex-direction: column;
     width:100%;
     display: block;
     position: relative;
     background-color: linear;
-    
- 
+    cursor: pointer;
+    border: none; 
 }
 .name{
     position: absolute;
@@ -17,6 +17,8 @@
     padding: 0;
     margin: 0;
     text-align: left;
+    font-size: 5rem;
+    transition: 0.5s;
 }
 .image{
     position: absolute;
@@ -25,14 +27,29 @@
     display: block;
     padding-left: 3%;
     padding-right: 3%;
+    border: none;
     
 }
 .gradient{
+    border: none;
+    all: unset;
     position: absolute;
     height: 120px;
     width: 94%; 
     left: 3%;
-    
+    cursor: pointer;
     background: linear-gradient(to bottom, transparent 30%, black);
     z-index: 15;
+    opacity: 1;
+}
+.container:hover .gradient{
+    opacity: 0.5;
+}
+
+.container:hover .name{
+    transition: 0.5s;
+    text-shadow:
+    0 0 10px rgba(246, 241, 233, 0.8),
+    0 0 20px rgba(246, 241, 233, 0.8),
+    0 0 30px rgba(246, 241, 233, 0.8);
 }

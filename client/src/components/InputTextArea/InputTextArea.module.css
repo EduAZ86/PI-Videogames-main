@@ -1,0 +1,28 @@
+.container{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:start;
+    
+}
+
+.label{
+    font-size: 4rem;
+    font-family: var( --font-bruno-ace);    
+    color: #F3EFE0;
+    text-shadow: 0px 0px 2px #434242;   
+    text-align: start;
+    margin-bottom: 5px;
+}
+.input{
+    all: unset;
+    background-color: #f3e0e0;
+    height: 32rem;
+    width: calc(100% - 10px);
+    padding: 5px;
+    align-items:center;
+    font-size: 3rem;
+    font-family: var( --font-bruno-ace);
+}

@@ -1,23 +1,30 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Landing, Home, Form, Detail } from './Views' 
 import NavBar from './components/NavBar/NavBar';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import React, { useState } from 'react';
-import { getGenres, organizer } from './redux/actions';
+import React, { useEffect, useState } from 'react';
+import { getGenres, getVideoGames, organizer } from './redux/actions';
 
 function App() {
   const location = useLocation()
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
+  // const video_games = useSelector((state) => state.videogames)
+  
+  // const handler_sort = (order) => {
 
-  const handler_sort = (order) => {
+  //   dispatch(organizer(order))
 
-    dispatch(organizer(order))
-  }
+    
+  // }
+
+  // useEffect(() => {
+  //   dispatch(getVideoGames)
+  // },[video_games])
 
   return (
     <div >    
-      {location.pathname !== '/' && <NavBar handler_sort={handler_sort} />}
+      {location.pathname !== '/' && <NavBar />}
       <div >
         <Routes>
           <Route exact path = '/' element= { <Landing/>}/>

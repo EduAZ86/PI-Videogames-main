@@ -29,30 +29,30 @@ const Detail = ()=>{
         < >
             {video_game !== null?
                 <>
-                    <img className={styles.background} src={video_game.background_image_additional} alt="" />        
-                    <div className={styles.subContainer}>
-                        <div className={styles.name} >
-                            <h1>{video_game.name}</h1>
-                            <p>{description_short}.</p>
-                            <h4> developers: {developers?.join(' - ')}</h4>
-                            <h4>released: {video_game.released}</h4>
-                        </div>
-                        <div className={styles.imageContainer} >
-                            <img className={styles.image} src={video_game.background_image} alt=""/>
-                            <h2 className={styles.rating} >Rating: {video_game.rating}</h2>
+                    <div className={styles.container}>
+                        <img className={styles.background} src={video_game.background_image_additional} alt="" />        
+                        <div className={styles.sectionTop}>
+                            <div className={styles.resumen} >
+                                <h1>{video_game.name}</h1>
+                                <p>{description_short}.</p>
+                                <h4> developers: {developers?.join(' - ')}</h4>
+                                <h4>released: {video_game.released}</h4>
+                            </div>
+                            <div className={styles.imageContainer} >
+                                <img className={styles.image} src={video_game.background_image} alt="gameImage"/>
+                                <h2 className={styles.rating} >Rating: {video_game.rating}</h2>
+                            </div>
                         </div>
                         <div className={styles.central} >
                             <h3>metacritic: {video_game.metacritic}</h3>
-                            <h5>{tags?.join(' - ')}</h5>
-                        
+                            <h5>{tags?.join(' - ')}</h5>                        
                         </div>
-                        <div className={styles.info} >
-                            <p className={styles.description}>{description}</p>                   
-                        </div>
+                        <p className={styles.description}>{description}</p>                   
+              
                         <div className={styles.tags} >
-                        <h4>{platforms?.join(', ')}</h4>
-                        <h4>{genres?.join(', ')}</h4>
-                        <h4>{stores?.join(', ')}</h4>
+                            <h4>{platforms?.join(', ')}</h4>
+                            <h4>{genres?.join(', ')}</h4>
+                            <h4>{stores?.join(', ')}</h4>
                         </div>
                     </div>       
                 

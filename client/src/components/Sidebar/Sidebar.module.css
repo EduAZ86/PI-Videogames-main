@@ -4,11 +4,9 @@
     width: 120px;
     height: 60px;
     top: 0px;          
-    position: absolute;
-    
+    position: absolute;    
     background-color:#434242;
     z-index: 120;
-
 }
 .img{
     z-index: 120;
@@ -135,6 +133,7 @@
     color: #e90c59;
     position: relative;
     grid-area: title;
+    font-size: 4rem;
 }
 
 /* ///////////////////FOR NAME//////////////////////////// */
@@ -251,11 +250,6 @@
 .desending:active {
     transform: scale(0.9);
 }
-
-
-
-
-
 
 
 .origen {

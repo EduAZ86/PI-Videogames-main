@@ -1,63 +1,73 @@
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from "react"
 import CardsContainer from '../CardsContainer/CardContainer'
+import React from 'react'
 import styles from './Pagination.module.css'
-
-
-const ITEMS_FOR_PAGE = 15
-
 const Pagination = () => {
-
+       
+    const { videogames, order } = useSelector((state)=>state)
+    const ITEMS_FOR_PAGE = 15
+    const last_page = Math.ceil(videogames.length/ITEMS_FOR_PAGE)
+    const pages = []
     
-    const { videogames } = useSelector((state)=>state)
- 
-    const  [items, setItems] = useState([...videogames].splice(0, ITEMS_FOR_PAGE))
-
+    
+    /////////////////////////////////////////////
+    const pagesHandler = () => {
+        pages.push(videogames.slice(0, ITEMS_FOR_PAGE)) 
+        for (let i = 1; i < last_page-1; i++) {
+            const firstIndex_nextPage = i * ITEMS_FOR_PAGE  
+            pages.push(videogames.slice(firstIndex_nextPage, firstIndex_nextPage + ITEMS_FOR_PAGE))        
+        }
+        pages.push(videogames.slice((last_page-1) * ITEMS_FOR_PAGE))
+        
+        return pages
+    }
+    /////////////////////////////////////////////
+    pagesHandler()
+    
+    const  [items, setItems] = useState(pages[0])
+    
     const [currentPage, setCurrentPage] = useState(0)
     
-        useEffect(()=>{
-            setItems([...videogames].splice(0,ITEMS_FOR_PAGE))
-        },[videogames])
+    useEffect(()=>{   
+        pagesHandler()
+        setCurrentPage(0)              
+        setItems(pages[currentPage])
+    },[order])
 
-    /////////////////////////////////////////////////////////////////
-
-    const nextPage = () => {  
-
-        const next_page = currentPage + 1
-
-        const firstIndex = next_page * ITEMS_FOR_PAGE
-
-        if (firstIndex+ITEMS_FOR_PAGE <= videogames.length) {
-            setItems([...videogames].splice(firstIndex, ITEMS_FOR_PAGE))    
-            setCurrentPage(next_page)            
+    useEffect(()=>{
+        pagesHandler()
+        if (videogames.length < ITEMS_FOR_PAGE) {
+            setItems(videogames.slice(0))
         } else{
-            setItems([...videogames].splice(firstIndex, videogames.length))
-            return 
-        }        
-  
+            setCurrentPage(0)
+        }
+    },[videogames])
+    
+    useEffect(()=>{
+        setItems(pages[currentPage])
+    },[currentPage])    
+   
+    const nextPage = () => {
+        if (currentPage <(last_page-1)) {
+            setCurrentPage(currentPage+1)
+        }
     }
-
     const previousPage = () => {
-        const prev_page = currentPage - 1
-        if (prev_page < 0) return
-        const firstIndex = prev_page * ITEMS_FOR_PAGE
-        setItems([...videogames].splice(firstIndex, ITEMS_FOR_PAGE))
-        setCurrentPage(prev_page)
+        if (currentPage > 0) {
+            setCurrentPage(currentPage-1)
+        }
     }
-
-
 return(
     <CardsContainer
         videogames={videogames}
         items={items}
         nextPage = {nextPage}
-        previousPage = {previousPage}
-        currentPage = {currentPage}
-        ITEMS_FOR_PAGE = {ITEMS_FOR_PAGE}
-    />   
-   
+        previousPage = {previousPage}      
+        currentPage = {currentPage+1}     
+        last_page ={last_page-1}
+    /> 
 )
-
 }
-
 export default Pagination
+

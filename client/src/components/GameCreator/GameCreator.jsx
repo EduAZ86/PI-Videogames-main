@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getGenres, getPlatforms, postVideoGame } from '../../redux/actions'
 import DinamicSelect from '../DinamicSelect/DinamicSelect'
+import InputField from '../InputField/InputField'
+import InputTextArea from '../InputTextArea/InputTextArea'
+import InputRange from '../InputRange/InputRange'
 
 const RegExp_URL_image = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*\.(jpg|jpeg|png|gif)$/i
 const RegExp_date = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
@@ -199,83 +202,132 @@ console.log();
 
     return (
         <form  onSubmit={(event) => handleSubmit(event)} onReset={(event) => handleReset(event)} className={styles.container}>
-            
-            
-            <div className={styles.name}>
-                <label htmlFor="name" className={styles.label}>Name: </label>
-                <input type="text" id='name' value={form.name} name='name' onChange={(event) => handleChange(event)} className={styles.inputname}/>
+            <div className={styles.leftSection}>
+                <InputField
+                    key='name'
+                    label='Name'
+                    name='name'
+                    placeholder='name'
+                    type='text'
+                    value={form.name}
+                    onChange={(event) => handleChange(event)}
+                />
                 <p className={styles.error}>{errors.name}</p>
+                <InputTextArea
+                    key='description'
+                    id='description_raw'
+                    label='Description:'
+                    value={form.description_raw}
+                    name='description_raw'
+                    onChange={(event) => handleChange(event)}
+                />
+                <p className={styles.error}>{ errors.description_raw}</p>
+                <div className={styles.selects}>
+                    <DinamicSelect
+                        key='genre'
+                        title='genre' 
+                        handleSelect={handleSelect} 
+                        options={allGenres}/>
+                    <DinamicSelect
+                        key='platform'
+                        title='platform'
+                        handleSelect={handleSelect}
+                        options={allPlatforms}/>
+                    <DinamicSelect
+                        key='store' 
+                        title='store' 
+                        handleSelect={handleSelect} 
+                        options={allStores}/>
+                </div>
             </div>
-
-            <div className={styles.image1}>
-              <label htmlFor="image"className={styles.label}>Image 1: </label>
-              <input type="text" id='image' value={form.background_image} name='background_image' onChange={(event) => handleChange(event)} className={styles.inputtext}/>
-              <p className={styles.error}>{ errors.background_image}</p>
+            <div className={styles.centerSection}>
+                <InputField
+                    key='released'
+                    label='Released: '
+                    name="released"
+                    placeholder=''
+                    type='date'
+                    value={form.released}
+                    onChange={(event) => handleChange(event)}
+                />
+                <p className={styles.error}>{ errors.released}</p>
+            
+                <div className={styles.developersytag}>
+                    <InputField
+                        key='developers'
+                        label='Developers'
+                        name='developers'
+                        placeholder='developer'
+                        type='text'
+                        value={dev}
+                        onChange={(event) => handleDev(event)} 
+                    /> 
+                    <button className={styles.buttonDevTag} type="button" onClick={() => addDev(dev)} >{dev}     ✔ ADD</button>
+                    <p className={styles.error}>{errors.developers}</p>
+                    <InputField
+                        key='tags'
+                        label='Tags: '
+                        name='tags'
+                        placeholder='tag'
+                        type='text'
+                        value={tag}
+                        onChange={(event) => handleTag(event)} 
+                    />     
+                    <button className={styles.buttonDevTag} type="button" onClick={() => addTag(tag)} >{tag}      ✔ ADD</button>
+                    <p className={styles.error}>{errors.tags}</p>
+                </div> 
+                <InputRange
+                    key='rating'                        
+                    name='rating'
+                    label='Rating:'
+                    value={form.rating}
+                    onChange={(event) => handleChange(event)}
+                    min='0'
+                    step='0.5'
+                    max='5'
+                />
+                <p className={styles.error}>{errors.rating}</p>
+                <InputRange
+                    key='metacritic'                        
+                    name='metacritic'
+                    label='Metacritic:'
+                    value={form.metacritic}
+                    onChange={(event) => handleChange(event)}
+                    min='0'
+                    step='1'
+                    max='100'
+                />
+                <p className={styles.error}>{errors.metacritic}</p>
             </div>
+            <div className={styles.rightSection}>
+                <InputField
+                    key='image1'
+                    label='Image 1: '
+                    name='background_image'
+                    placeholder='image 1'
+                    type='text'
+                    value={form.background_image}
+                    onChange={(event) => handleChange(event)} 
+                />
+                <p className={styles.error}>{ errors.background_image}</p>
+                <InputField
+                    key='image2'
+                    label='Image 2: '
+                    name='background_image_additional'
+                    placeholder='image 2'
+                    type='text'
+                    value={form.background_image_additional}
+                    onChange={(event) => handleChange(event)} 
+                />
+                <p className={styles.error}>{ errors.background_image}</p>
+                <div className={styles.buttons}>
+                    <input type="submit" value="Create Game" className={styles.button} />
+                    <input type="reset" value="Reset Form" className={styles.button} />
+                </div>
+            </div>             
 
-            <div className={styles.image2}>
-              <label htmlFor="image2" className={styles.label}>Image 2: </label>
-              <input type="text" id='image2' value={form.background_image_additional} name='background_image_additional' onChange={(event) => handleChange(event)} className={styles.inputtext}/>
-              <p className={styles.error}>{ errors.background_image}</p>
-            </div>
-
-            <div className={styles.description}>
-               <label htmlFor="description" className={styles.label}>Description: </label>
-               <textarea id="description" cols="30" rows="10" value={form.description_raw} name='description_raw' onChange={(event) => handleChange(event)} className={styles.textarea}/>
-               <p className={styles.error}>{errors.description}</p>
-            </div>
-
-            <div className={styles.released}>
-                <label htmlFor="released" className={styles.label}>Released: </label>
-               <input type="date" id="released" value={form.released} name='released' onChange={(event) => handleChange(event)} className={styles.input}/>
-               <p className={styles.error}>{ errors.released}</p>
-            </div>
-
-            <div className={styles.rating}>
-               <label htmlFor="rating" className={styles.label}>Rating: </label>
-               <input type="range" id="rating" value={form.rating} name='rating' onChange={(event) => handleChange(event)} min='0' step='0.5' max='5' className={styles.input}/>
-               <span>{form.rating}</span>
-               <p className={styles.error}>{errors.rating}</p>
-            </div>
-
-            <div className={styles.metacritic}>
-               <label htmlFor="metacritic" className={styles.label}>metacritic: </label>
-               <input type="range" id="metacritic" value={form.metacritic} name='metacritic' onChange={(event) => handleChange(event)} min='0' step='1' max='100' className={styles.input}/>
-               <span>{form.metacritic}</span>
-               <p className={styles.error}>{errors.metacritic}</p>
-            </div>
-
-            <div className={styles.selects}>
-                <DinamicSelect title='genre' handleSelect={handleSelect} options={allGenres} />
-                <DinamicSelect title='platform' handleSelect={handleSelect} options={allPlatforms}/>
-                <DinamicSelect title='store' handleSelect={handleSelect} options={allStores}/>
-            </div>
-
-
-            <div className={styles.developersytag}>
-                <label htmlFor="developers" className={styles.label}>Developers: </label>
-                <input type="text" id="developers" value={dev} name='developers' onChange={(event) => handleDev(event)} className={styles.inputdev}/>
-                
-                <button className={styles.buttondev} type="button" onClick={() => addDev(dev)} >{dev}     ✔ ADD</button>
-                <p className={styles.error}>{errors.developers}</p>
-                <label htmlFor="tags" className={styles.label}>Tags: </label>
-                <input type="text" id="tags" value={tag} name='developers' onChange={(event) => handleTag(event)} className={styles.inputtag}/>
-               
-                <button className={styles.buttontag} type="button" onClick={() => addTag(tag)} >{tag}      ✔ ADD</button>
-                <p className={styles.error}>{errors.tags}</p>
-            </div>
 
           
-          
-
-           
-            <div className={styles.buttons}>
-                <input type="submit" value="Create Game" className={styles.buttons} />
-                <input type="reset" value="Reset Form" className={styles.buttons} />
-            </div>
-
-
-
         </form>
     )
 

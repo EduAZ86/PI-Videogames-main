@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styles from './Sidebar.module.css'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { getVideoGames, organizer } from '../../redux/actions'
 import { filterOrigin } from '../../redux/actions'
 import { useState } from 'react'
 
 
-const Sidebar = (props) => {
+const Sidebar = () => {
 
     const dispatch = useDispatch()
-
+    
+    const handler_sort = (order) => {  
+      dispatch(organizer(order))      
+    }
     const datafilter = (data) => {
         dispatch(filterOrigin(data))
     }
@@ -21,6 +24,8 @@ const Sidebar = (props) => {
     const sidebar_landing = () => {
         setBand(!band)
     }
+      
+  
 
     return (
         <div className={styles.container}>
@@ -28,18 +33,18 @@ const Sidebar = (props) => {
             {band? ( <div className={styles.filters}>
                     <div className={styles.forname}>
                         <h4 className={styles.title}>for name</h4>
-                        <button type="button" onClick={() => {props.handler_sort('ZA')}} className={styles.azbutton}/>
-                        <button type="button" onClick={() => {props.handler_sort('AZ')}} className={styles.zabutton}/>
+                        <button type="button" onClick={() => {handler_sort('ZA')}} className={styles.azbutton}/>
+                        <button type="button" onClick={() => {handler_sort('AZ')}} className={styles.zabutton}/>
                     </div>
                     <div className={styles.forname}>
                         <h4 className={styles.title}>for rating</h4>
-                        <button type="button" onClick={() => {props.handler_sort('>')}} className={styles.upratingbutton}/>
-                        <button type="button" onClick={() => {props.handler_sort('<')}} className={styles.downratingbutton}/>
+                        <button type="button" onClick={() => {handler_sort('>')}} className={styles.upratingbutton}/>
+                        <button type="button" onClick={() => {handler_sort('<')}} className={styles.downratingbutton}/>
                     </div>
                     <div className={styles.forname}>
                         <h4 className={styles.title}>released</h4>
-                        <button type="button" onClick={() => {props.handler_sort('ase')}} className={styles.asending}/>
-                        <button type="button" onClick={() => {props.handler_sort('des')}} className={styles.desending}/>
+                        <button type="button" onClick={() => {handler_sort('ase')}} className={styles.asending}/>
+                        <button type="button" onClick={() => {handler_sort('des')}} className={styles.desending}/>
                     </div>
                     <div className={styles.origen}>
                     

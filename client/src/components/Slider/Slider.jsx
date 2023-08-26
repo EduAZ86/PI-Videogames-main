@@ -36,20 +36,19 @@ const Slider = (props) => {
     return(
         <div className={styles.container}>
             <button onClick={previusItem} className={styles.previus}><img className={styles.img} src={prevIcon} alt="" /></button>
-            {Items.map((item, index)=>{
-                return <>
-                {currentItem.includes(index)  && (
+            {Items.map((item, index) => {
+                return (
+                    currentItem.includes(index) && (
                     <CardSlider
-                    key={item.id}
-                    id={item.id}
-                    name={item.name}
-                    image={item.image_background}
-                    items_filter={props.items_filter}                
-                    /> 
-                )}
-                </>
-                
-            })}
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        image={item.image_background}
+                        items_filter={props.items_filter}
+                    />
+                    )
+                );
+                })}
             <button onClick={nextItem} className={styles.next}><img className={styles.img} src={nextIcon} alt="" /></button>
         </div>
     )

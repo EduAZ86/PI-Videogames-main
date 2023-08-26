@@ -9,6 +9,7 @@ const initialState = {
     cache: [],
     users:[],
     access:false,
+    order:'',
     error:''
 }
 const rootReducer = (state = initialState, action) =>{
@@ -96,9 +97,9 @@ const rootReducer = (state = initialState, action) =>{
                     if(new Date(a.released).getTime() < new Date(b.released).getTime()) return 1
                     if(new Date(b.released).getTime() < new Date(a.released).getTime()) return - 1
                     return 0
-                }
+                }           
             })                        
-            return {...state, videogames: orderGames}
+            return {...state, videogames: orderGames, order: action.payload}
 
             case GET_ALL_USERS:
                 return {...state, users: action.payload}

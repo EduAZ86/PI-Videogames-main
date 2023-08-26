@@ -41,9 +41,16 @@ const Home = ()=>{
     return (
         <div className={styles.container}>         
         {video_game.length?
-           <div className={styles.subContainer}>                              
-                <Slider items_filter={genres_filter} Items={Genres}/>
-                <Slider items_filter={platforms_filter} Items={Platforms} />
+           <div className={styles.subContainer}>
+                <span className={styles.background}/>                              
+                <Slider
+                    key='genre' 
+                    items_filter={genres_filter}
+                    Items={Genres}/>
+                <Slider
+                    key='platform' 
+                    items_filter={platforms_filter} 
+                    Items={Platforms} />
                 <Pagination/>           
             </div>
          :<Loader/>}

@@ -1,39 +1,37 @@
 
-import { useState } from 'react'
+
 import Card from '../Card/Card'
 import styles from './CardContainer.module.css'
-
-
+import React from 'react'
 
 const CardsContainer = (props) => {
+    const { items, previousPage, nextPage, currentPage, last_page, videogames } = props
 
-     const [ currentP, setCurrentP ] = useState(0)
-
-     const handleCurrentPage = () => {
-        
-     }
-
-    const { items, previousPage, nextPage, currentPage, ITEMS_FOR_PAGE, videogames } = props
-    
     return(
         <div className={styles.container}>
+            <div className={styles.buttons}>
+                {currentPage > 1 && <button className={styles.prev} onClick={previousPage}></button>}
+                <h2 className={styles.currentPage} >{currentPage} for {Math.floor(videogames.length/15)+1}</h2>
+                {currentPage < last_page+1  && <button className={styles.next} onClick={nextPage}></button>}
+            </div>
             <div className={styles.mapCardsContainer} >
-                {items.map((game)=>{
-                    return <Card
-                        key={game.id}
-                        id={game.id}
-                        name={game.name}
-                        background_image={game.background_image}
-                        genres={game.genres.map((gen)=>gen.name)}
-                        platforms={game.platforms.map((plat) => plat.platform.name)}
-                    />
+                {items.map((game, index)=>{
+                    return (
+                        <Card
+                            key={index}
+                            id={game.id}
+                            name={game.name}
+                            background_image={game.background_image}
+                            genres={game.genres.map((gen)=>gen.name)}
+                            platforms={game.platforms.map((plat) => plat.platform.name)}
+                        />)
                 })}
             </div>
             <div className={styles.buttons}>
-                {currentPage > 0 && <button className={styles.prev} onClick={previousPage}>previous</button>}
-                {items.length === ITEMS_FOR_PAGE && <button className={styles.next} onClick={nextPage}>next</button>}
+                {currentPage > 1 && <button className={styles.prev} onClick={previousPage}></button>}
+                <h2 className={styles.currentPage} >{currentPage} for {Math.floor(videogames.length/15)+1}</h2>
+                {currentPage < last_page+1  && <button className={styles.next} onClick={nextPage}></button>}
             </div>
-            <h2 className={styles.currentPage} >{currentPage+1} for {Math.floor(videogames.length/15)+1}</h2>
             <footer className={styles.footer}></footer>
         </div>
     )

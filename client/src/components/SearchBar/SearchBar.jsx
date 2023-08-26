@@ -10,7 +10,6 @@ const SearchBar = () => {
         setNameVG(event.target.value)
         if (nameVG === '') {
             dispatch(cleanVideoGamesByName())
-            console.log(setNameVG);
         }
     }
 

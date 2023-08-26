@@ -25,7 +25,10 @@ const DinamicSelect = (props) => {
         <label  className={styles.label} htmlFor={id}>{label} </label>
         <select  className={styles.select}  name={id} id={id} onChange={(event) => handleOption(event.target.value, event.target.id)} >
             <option  className={styles.option}  value="">Select a {title}</option>
-            {options_name.map((opt) => <option value={opt}>{opt}</option>)}
+            {options_name.map((opt,index) => <option
+            key={index}
+            value={opt}>{opt}
+            </option>)}
         </select>
         <span  className={styles.span}  >{optionSelect.value}</span>
         <button  className={styles.button}  type="button" onClick={() => {

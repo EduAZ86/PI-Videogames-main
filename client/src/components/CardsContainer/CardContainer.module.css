@@ -2,48 +2,57 @@
     padding: 0;
     margin: 0;
     margin-left: 6px;
-    display: grid;
-    grid-template-areas: 'cards cards'
-                         'buttons pages'                         
-                         'footer footer';  
-    grid-template-rows: 1650px 40px 120px;
-    grid-template-columns: 560px 125px;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .mapCardsContainer{
- grid-area: cards;
+ /* grid-area: cards; */
 }
 
 .buttons{
-    grid-area: buttons;
-    display: grid;
-    grid-template-areas: 'prev next'; 
-    grid-template-rows: 100%;
-    grid-template-columns: 50% 50%;
+display: grid;
+grid-template-areas: 'prev pages next';
+grid-template-rows: 30% 30% 30%;
+gap: 2%;
+grid-template-columns: auto;
+justify-content: space-between;
+width: 100%;
+height: 40px;
 }
 
 .next{
     grid-area: next;
     border-radius: 10px;
     font-size: 20px;
+    height: 30px;
+    width: 30px;
+    background-image: url('../../assets/keyboard_double_arrow_right_black_24dp.svg');
+    background-position: center;
+    background-size: cover;
 }
 
 .prev{
     grid-area: prev;
     border-radius: 10px;
     font-size: 20px;
+    height: 30px;
+    height: 30px;
+    width: 30px;
+    background-image: url('../../assets/keyboard_double_arrow_left_black_24dp.svg');
+    background-position: center;
+    background-size: cover;
 }
 
 .currentPage{
+    grid-area: pages;
     margin: 0;
     padding: 0;
     padding-left: 10px;
     color: azure;
-    grid-area: pages;
     font-size: 25px;
 }
 
 .footer{
-    grid-area: footer;
+    /* grid-area: footer; */
 }

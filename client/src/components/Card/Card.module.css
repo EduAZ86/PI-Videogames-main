@@ -4,7 +4,8 @@
 
 .container{
     height:100px ;
-    width: 99%;
+ 
+    min-width: 300px;
     display: grid;
     margin-top: 10px;
     grid-template-areas: 'image name space'
@@ -12,12 +13,13 @@
                          'image genres space';
     position: relative;
     grid-template-rows: 34px 33px 33px;
-    grid-template-columns: 190px 70% max-content ;
+    grid-template-columns: 190px 70% auto ;
     background-color: #46dff0;
     background-image: linear-gradient(to right, #46dff0 22%, black);   
     border-radius: 5px;
     padding: 0;
-
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 

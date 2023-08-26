@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar/Sidebar'
 import { cleanVideoGamesByName, setAccess } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
-const NavBar = (props) => {
+const NavBar = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const logOut = () => {
@@ -20,14 +20,23 @@ const NavBar = (props) => {
     
     return (
         <div className={styles.container}>
-            <Sidebar handler_sort={props.handler_sort} />           
+            <Sidebar  />           
             <div className={styles.subContainer}>
                 <SearchBar/>
                 { VG_by_name.length>0
                 ?(<div className={styles.results}> 
                     {VG_by_name.map((game)=>{
                         return(
-                        <li><NavLink  to={`/detail/${game.id}`} ><button onClick={onClean}>{game.name}</button></NavLink></li>
+                        <li
+                            key={game.id}
+                        >
+                            <NavLink                                
+                                to={`/detail/${game.id}`}
+                                 ><button 
+                                    onClick={onClean}
+                                    >{game.name}</button>
+                            </NavLink>
+                        </li>
                         )
                     })}            
                 </div>)            

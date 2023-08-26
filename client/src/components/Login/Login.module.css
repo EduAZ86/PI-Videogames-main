@@ -1,56 +1,25 @@
 .container{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items:center;
-   height: 300px;
-   width: 400px;
-   border-radius: 50%;
+   height: 50vh;
+   width: 60vw; 
    z-index: 50;
   
 }
 .form{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.imput{
-    border: unset;
-    background-color: unset;
-    background-color: #f3e0e0;
-    height: 30px;
-    width: 200px;
-    font-family: 'Bruno Ace', cursive;
-    border-radius: 20px; 
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding-left: 5px;
-    align-items:center;
-    
-    
-}
-
-.div{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items:center;
-}
-
-
-.label{
-    font-family: 'Bruno Ace', cursive;
-    margin-right: 20px;
-    color: #F3EFE0;
-    text-shadow: 0px 0px 2px #434242;
-    margin-bottom: 15px;
+    height: 50%;
+    width: 55%;
+    min-width: max-content;
+    gap: 10px;
 }
 
 .button {
-    min-width: 130px;
-    margin-right: 20px;
-    height: 35px;
+    width: 100%;   
+    height: 8rem;
     color:  #f3e0e0 ;
     padding: 5px 10px;
     font-weight: bold;
@@ -60,7 +29,7 @@
     position: relative;
     display: inline-block;
     outline: none;
-    border-radius: 20px;
+    border-radius: 2px;
     border: 2px solid #22A39F;
     background: #22A39F;
   }
@@ -72,21 +41,25 @@
   
 .error{
     color:#E96479 ;
-    font-family: 'Bruno Ace', cursive;
-    text-align: justify;
-    padding-left: 55px;
-    max-width: 330px;
-    font-size: 15px; 
+    font-family: var(--font-bruno-ace);
+    text-align: justify;    
+    font-size: 3rem;
+    white-space: break-word;
+    margin: 0;  
 }
 
 .errorContainer{
+    list-style-type: none;
+    height: 20%;
+    width: 55%;
+    position: relative;
+    font-size: 2.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    height: 200px;
-    width: 400px;   
-    white-space: break-word;
-    overflow: hidden;
+    justify-content: center;
+    align-items: start;
+    padding: 0; 
+    margin-top: 10px;
     color: white;
+    gap: 5px;
 }

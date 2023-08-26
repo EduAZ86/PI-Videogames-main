@@ -10,7 +10,7 @@
     background-position: center;
     filter: blur(0px);
     z-index: 1;
-    position: relative;
+    position: fixed;
 
  }
 
