@@ -6,10 +6,6 @@
     flex-direction: column;
 }
 
-.mapCardsContainer{
- /* grid-area: cards; */
-}
-
 .buttons{
 display: grid;
 grid-template-areas: 'prev pages next';
@@ -53,6 +49,3 @@ height: 40px;
     font-size: 25px;
 }
 
-.footer{
-    /* grid-area: footer; */
-}
