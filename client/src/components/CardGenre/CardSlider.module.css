@@ -6,7 +6,6 @@
     position: relative;
     background-color: linear;
     cursor: pointer;
-    border: none; 
 }
 .name{
     position: absolute;
@@ -26,12 +25,10 @@
     width: 94%;
     display: block;
     padding-left: 3%;
-    padding-right: 3%;
-    border: none;
-    
+    padding-right: 3%;    
+
 }
-.gradient{
-    border: none;
+.gradient{    
     all: unset;
     position: absolute;
     height: 120px;

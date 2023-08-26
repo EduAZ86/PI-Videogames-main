@@ -1,5 +1,5 @@
 import { GET_VIDEOGAMES, GET_GENRE, GET_VG_BY_ID, ADD_VIDEOGAME, ERROR,
-     GET_VG_BY_NAME,  CLEAN_VG_BY_NAME ,DELETE_VG, ORDER, ORIGIN_FILTER, GENRES_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER, ACCESS } from "./actionTypes"
+     GET_VG_BY_NAME,  CLEAN_VG_BY_NAME ,DELETE_VG, ORDER, ORIGIN_FILTER, GENRES_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER, ACCESS, CLEAN_VG_BY_ID } from "./actionTypes"
 import axios from 'axios'
 
 const URL = 'http://localhost:3001'
@@ -42,6 +42,12 @@ export const getVideoGameById = (id) => {
         }
     }
 
+}
+export const clearDetail = () => {
+    return (dispatch) => {
+        const clean = []
+        return dispatch({type: CLEAN_VG_BY_ID, payload: clean})
+    }
 }
 
 export const getVideoGamesByName = (name) =>{

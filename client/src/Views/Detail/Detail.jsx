@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch} from "react-redux"
 import { useParams } from "react-router-dom"
-import { getVideoGameById } from "../../redux/actions"
+import { clearDetail, getVideoGameById } from "../../redux/actions"
 import styles from './Detail.module.css'
 import Loader from "../../components/Loader/Loader"
 const Detail = ()=>{
@@ -9,9 +9,13 @@ const Detail = ()=>{
     const { id } = useParams()
     const dispatch = useDispatch()
     const video_game = useSelector((state) => state.detailVG)
-    useEffect(()=>{
+  
+    useEffect( ()=>{
         dispatch(getVideoGameById(id))
-    },[dispatch,id])     
+        return () => {
+            dispatch(clearDetail());
+          };         
+    },[dispatch, id])     
 
 
     const description_short = video_game.description_raw?.split('.').splice(0,2)

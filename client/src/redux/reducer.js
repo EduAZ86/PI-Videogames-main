@@ -1,8 +1,8 @@
-import { GET_VIDEOGAMES,GET_VG_BY_ID,GET_VG_BY_NAME, ADD_VIDEOGAME, DELETE_VG, GET_GENRE, CLEAN_VG_BY_NAME, ORDER, GENRES_FILTER, ORIGIN_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER, ERROR, ACCESS   } from "./actionTypes"
+import { GET_VIDEOGAMES,GET_VG_BY_ID,GET_VG_BY_NAME, ADD_VIDEOGAME, DELETE_VG, GET_GENRE, CLEAN_VG_BY_NAME, ORDER, GENRES_FILTER, ORIGIN_FILTER, PLATFORM_FILTER, CLEAN_FILTERS, GET_PLATFORM, GET_ALL_USERS, POST_NEW_USER, ERROR, ACCESS, CLEAN_VG_BY_ID   } from "./actionTypes"
 
 const initialState = {
     videogames: [],
-    detailVG: [],
+    detailVG: {},
     videogamesName: [],
     genres: [],
     platforms: [],
@@ -23,7 +23,8 @@ const rootReducer = (state = initialState, action) =>{
             
         case GET_VG_BY_ID:
             return {...state, detailVG: action.payload}
-        
+        case CLEAN_VG_BY_ID:
+            return {...state, detailVG: action.payload}
         case GET_VG_BY_NAME:
             return {...state, videogamesName: action.payload}
 
